@@ -8,15 +8,22 @@ export const sections = [
   { id: 'contato' },
 ] as const
 
-export type Project = { tags: string[]; href: string }
+export type Project = {
+  tags: string[]
+  year: string
+  /** caminhos em /public (ex.: 'projects/projeto-1/01.jpg'); vazio = blocos placeholder no modal */
+  images: string[]
+  demo?: string
+  repo?: string
+}
 
-// A ordem daqui corresponde a `projects.items` em messages.ts (título e descrição)
+// A ordem daqui corresponde a `projects.items` em messages.ts (título, descrição e detalhes do modal)
 export const projects: Project[] = [
-  { tags: ['Node', 'Postgres', 'React'], href: '#' },
-  { tags: ['TypeScript', 'Express'], href: '#' },
-  { tags: ['Next.js', 'Prisma', 'Stripe'], href: '#' },
-  { tags: ['React', 'Vite', 'Docker'], href: '#' },
-  { tags: ['GitHub Actions', 'Docker', 'Linux'], href: '#' },
+  { tags: ['Node', 'Postgres', 'React'], year: '2025', images: [] },
+  { tags: ['TypeScript', 'Express'], year: '2025', images: [] },
+  { tags: ['Next.js', 'Prisma', 'Stripe'], year: '2024', images: [] },
+  { tags: ['React', 'Vite', 'Docker'], year: '2024', images: [] },
+  { tags: ['GitHub Actions', 'Docker', 'Linux'], year: '2023', images: [] },
 ]
 
 // Todas as ferramentas usadas nos projetos, sem repetição (alimenta a faixa abaixo do slider)

@@ -66,6 +66,11 @@
     @include m.label;
     color: c.$accent;
     text-decoration: none;
+    // também é usado em <button>
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
 
     &:hover {
       text-decoration: underline;
