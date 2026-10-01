@@ -1,0 +1,177 @@
+@use 'colors' as c;
+@use 'typography' as t;
+@use 'mixins' as m;
+
+.projects {
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    button {
+      @include m.label;
+      color: c.$text;
+      background: transparent;
+      border: 1px solid c.$border;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+
+      &:hover {
+        color: c.$accent;
+        border-color: c.$accent;
+      }
+    }
+  }
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: none;
+  cursor: grab;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &--dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+}
+
+.slide {
+  flex: 0 0 min(340px, 80vw);
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  background: c.$surface;
+  border: 1px solid c.$border;
+  border-top: 4px solid var(--slide-accent);
+  transition: border-color 0.2s;
+
+  &--primary { --slide-accent: #{c.$accent}; }
+  &--alt { --slide-accent: #{c.$accent-alt}; }
+
+  &:hover {
+    border-color: var(--slide-accent);
+  }
+
+  &__index {
+    @include m.display-title(t.$size-giant);
+    font-size: clamp(4rem, 9vw, 7rem);
+    color: var(--slide-accent);
+  }
+
+  &__title {
+    @include m.display-title(1.8rem);
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    color: c.$muted;
+    margin: 0 0 16px;
+  }
+}
+
+// Faixa com todas as ferramentas usadas, em rolagem contínua
+.tools {
+  display: flex;
+  align-items: stretch;
+  margin-top: 32px;
+  border: 1px solid c.$border;
+  background: c.$surface;
+  overflow: hidden;
+
+  & + & {
+    margin-top: 12px;
+  }
+
+  &__label {
+    @include m.label;
+    flex: none;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    color: c.$bg;
+    background: var(--tools-accent);
+  }
+
+  &--alt {
+    --tools-accent: #{c.$accent-alt};
+    --tools-dot: #{c.$accent};
+  }
+
+  &--primary {
+    --tools-accent: #{c.$accent};
+    --tools-dot: #{c.$accent-alt};
+  }
+
+  // segunda faixa: rótulo à direita e movimento no sentido oposto
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+
+  &--reverse &__track {
+    animation-direction: reverse;
+    animation-duration: 38s;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    flex: 1;
+
+    @include m.reduced-motion {
+      overflow-x: auto;
+    }
+  }
+
+  &__track {
+    display: flex;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: tools-scroll 30s linear infinite;
+
+    @include m.reduced-motion {
+      animation: none;
+    }
+
+    li {
+      @include m.display-title(1.4rem);
+      font-size: 1.4rem;
+      padding: 14px 24px;
+      white-space: nowrap;
+
+      &::after {
+        content: '•';
+        margin-left: 48px;
+        color: var(--tools-dot);
+      }
+    }
+  }
+
+  &:hover &__track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes tools-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}

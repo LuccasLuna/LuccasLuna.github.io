@@ -1,0 +1,131 @@
+@use 'colors' as c;
+@use 'typography' as t;
+@use 'mixins' as m;
+
+.section__label {
+  @include m.label;
+  color: c.$accent;
+}
+
+.section__title {
+  @include m.display-title;
+  margin: 8px 0 32px;
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: c.$surface;
+  border: 1px solid c.$border;
+  padding: 24px;
+  transition: border-color 0.2s, translate 0.2s;
+
+  &:hover {
+    border-color: c.$accent;
+    translate: 0 -4px; // propriedade `translate`, para não brigar com o transform do Motion
+
+    @include m.reduced-motion {
+      translate: none;
+    }
+  }
+
+  &__index {
+    @include m.label;
+  }
+
+  &__title {
+    @include m.display-title(2rem);
+    margin: 8px 0;
+  }
+
+  &__text {
+    color: c.$muted;
+    margin: 0 0 16px;
+  }
+
+  &__tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0 0 16px;
+
+    li {
+      @include m.label;
+      border: 1px solid c.$border;
+      padding: 2px 8px;
+    }
+  }
+
+  &__link {
+    @include m.label;
+    color: c.$accent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid c.$border;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+
+  &__period {
+    @include m.label;
+  }
+
+  &__role {
+    font-family: t.$font-display;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.contact {
+  &__big {
+    @include m.display-title(t.$size-giant);
+    display: block;
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: c.$accent-alt;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+}
+
+.footer {
+  @include m.label;
+  text-align: center;
+  padding: 32px 24px;
+  border-top: 1px solid c.$border;
+}

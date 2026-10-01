@@ -1,0 +1,8 @@
+// Marathon usa KH Interference (mono, paga, khtype.com). Space Mono é a substituta gratuita.
+// Se a fonte for licenciada, troque só $font-display e adicione o @font-face.
+$font-display: 'Space Mono', ui-monospace, monospace;
+$font-body: 'Inter', system-ui, sans-serif;
+$font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+$size-giant: clamp(2.75rem, 11vw, 9rem);
+$size-title: clamp(2rem, 6vw, 4.5rem);

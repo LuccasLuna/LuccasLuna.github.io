@@ -1,0 +1,62 @@
+// Única fonte de cores do projeto. Nenhum outro arquivo deve usar hex direto.
+// Para trocar a paleta, edite só este arquivo.
+//
+// Tema escuro (padrão): paleta do Marathon (2026). Hex do accent/fundo/texto/secundárias
+// vêm de um tema de fã (github.com/Samat220/omarchy-marathon-theme), não de fonte oficial.
+// Tema claro: derivado por nós (não oficial); o acid #c2fe0b não tem contraste sobre fundo
+// claro, então no claro o destaque vira um verde escuro.
+//
+// As variáveis SCSS abaixo apontam para custom properties CSS, que mudam conforme
+// <html data-theme="light|dark">. Nos outros arquivos use sempre `c.$nome`.
+
+$bg: var(--bg);
+$surface: var(--surface);
+$border: var(--border);
+$text: var(--text); // texto corrido
+$white: var(--title); // títulos e letras grandes (branco no escuro, quase preto no claro)
+$muted: var(--muted);
+
+// Destaques (regra: 1 destaque por seção)
+$accent: var(--accent);
+$accent-alt: var(--accent-alt);
+
+// Efeitos
+$grid-line: var(--grid-line);
+$scanline: var(--scanline);
+$overlay: var(--overlay);
+
+// Reservadas para estados futuros (ainda não usadas, iguais nos dois temas)
+$violet: #3601fb;
+$cyan: #01ffff;
+$orange: #ff5500;
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #080a0e; // void black
+  --surface: #0f1218;
+  --border: #222833;
+  --text: #e8eddf; // off-white de terminal
+  --title: #ffffff;
+  --muted: #838a82;
+  --accent: #c2fe0b; // acid yellow-green, assinatura do Marathon
+  --accent-alt: #ea027e; // magenta (marcador de runner)
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --scanline: rgba(0, 0, 0, 0.18);
+  --overlay: rgba(8, 10, 14, 0.85);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f4f5ee;
+  --surface: #ffffff;
+  --border: #d5d8cc;
+  --text: #14171c;
+  --title: #080a0e;
+  --muted: #5d645c;
+  --accent: #4d6b00; // verde escuro: contraste sobre fundo claro
+  --accent-alt: #c4006a;
+  --grid-line: rgba(0, 0, 0, 0.05);
+  --scanline: rgba(0, 0, 0, 0.04);
+  --overlay: rgba(244, 245, 238, 0.85);
+}

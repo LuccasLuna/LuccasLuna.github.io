@@ -1,0 +1,97 @@
+@use 'colors' as c;
+@use 'typography' as t;
+@use 'mixins' as m;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: none;
+
+  &__label {
+    @include m.label;
+    color: c.$accent;
+  }
+
+  &__title {
+    @include m.display-title(t.$size-giant);
+    margin: 16px 0;
+  }
+
+  &__subtitle {
+    font-family: t.$font-display;
+    font-size: clamp(1.1rem, 3vw, 2rem);
+    text-transform: uppercase;
+    color: c.$muted;
+    margin: 0 0 32px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+}
+
+.btn {
+  @include m.label;
+  color: c.$bg;
+  background: c.$accent;
+  padding: 14px 28px;
+  text-decoration: none;
+  border: 1px solid c.$accent;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: transparent;
+    color: c.$accent;
+  }
+
+  &--ghost {
+    background: transparent;
+    color: c.$text;
+    border-color: c.$border;
+
+    &:hover {
+      color: c.$accent;
+      border-color: c.$accent;
+    }
+  }
+}
+
+// Botões de link externo/contato: marcador [↗] e faixa listrada à esquerda (estilo Marathon)
+.btn--link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  padding-left: 36px;
+  overflow: hidden;
+
+  // a faixa usa a cor do texto do botão; no ghost fica sempre na cor de destaque
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 8px;
+    background: repeating-linear-gradient(-45deg, currentColor 0 3px, transparent 3px 6px);
+  }
+
+  &.btn--ghost::before {
+    background: repeating-linear-gradient(-45deg, c.$accent 0 3px, transparent 3px 6px);
+  }
+
+  .btn__icon {
+    display: inline-block;
+    transition: translate 0.2s;
+  }
+
+  &:hover .btn__icon {
+    translate: 2px -2px;
+
+    @include m.reduced-motion {
+      translate: none;
+    }
+  }
+}
+

@@ -1,0 +1,67 @@
+@use 'colors' as c;
+@use 'typography' as t;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: c.$bg;
+  color: c.$text;
+  font-family: t.$font-body;
+  line-height: 1.6;
+  overflow-x: clip; // a sangria da imagem do Sobre usa 100vw, que inclui a barra de rolagem
+  transition: background-color 0.3s, color 0.3s;
+  // grade sutil + scanlines de baixa opacidade
+  background-image:
+    linear-gradient(c.$grid-line 1px, transparent 1px),
+    linear-gradient(90deg, c.$grid-line 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(transparent 0 2px, c.$scanline 3px);
+  z-index: -1; // atrás do conteúdo: textura só no fundo, nunca sobre textos
+}
+
+a {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
+
+.section {
+  min-height: 100vh;
+  padding: 120px 24px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid c.$border;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 60;
+  background: c.$accent;
+  transform-origin: left;
+}

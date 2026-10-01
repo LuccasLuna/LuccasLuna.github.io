@@ -1,0 +1,42 @@
+@use 'colors' as c;
+@use 'typography' as t;
+
+// Etiquetas técnicas decorativas: baixo contraste para não competir com o conteúdo
+.spec {
+  font-family: t.$font-mono;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: c.$muted;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  border-top: 1px solid c.$border;
+  overflow-wrap: anywhere;
+  user-select: none;
+
+  &__serial {
+    letter-spacing: 0.3em;
+    white-space: pre-wrap;
+    margin-bottom: 16px;
+  }
+
+  &__cols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 56px;
+  }
+
+  &__title {
+    color: c.$text;
+  }
+
+  &__col div:not(.spec__title) {
+    white-space: pre;
+  }
+
+  &__notice {
+    margin-top: 16px;
+  }
+}
