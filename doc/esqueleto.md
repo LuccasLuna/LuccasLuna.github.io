@@ -108,4 +108,5 @@ Componentes ficariam em `src/components/`; dados (projetos, skills) em `src/data
 | 2026-10-01 | Botões de contato no estilo da lista da referência | E-mail, GitHub e LinkedIn ganham marcador `[↗]` e faixa listrada diagonal à esquerda (`.btn--link`); botões do hero não mudam |
 | 2026-10-01 | Elementos HUD nos cantos da página | `CornerMarks`: mira (topo esquerdo), xadrez (topo direito), faixa vertical com código de barras, ícones, número e texto (baixo esquerdo) e monograma "L" em pixel (baixo direito); fixos, só em telas ≥1280px, decorativos. Os originais do Marathon (logo X e texto do jogo) não foram copiados |
 | 2026-10-01 | Mira do canto gira com a barra de progresso | A mira do canto superior esquerdo gira 2 voltas do topo ao fim da página, usando o mesmo valor suavizado da barra (`useScrollProgress`); parada com movimento reduzido |
+| 2026-10-01 | Canto superior direito vira globo que gira ao rolar | O xadrez deu lugar a um globo em arame (`Globe.tsx`) cujos meridianos variam com o progresso do scroll, simulando 2 giros do topo ao fim da página; parado com movimento reduzido |
 

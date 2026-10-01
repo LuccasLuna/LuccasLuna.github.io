@@ -1,5 +1,6 @@
 import { motion, useReducedMotion, useTransform } from 'motion/react'
 import { useScrollProgress } from '../hooks/useScrollProgress'
+import Globe from './Globe'
 
 // Marcas decorativas fixas nos cantos da janela (estilo HUD). Só aparecem em telas largas,
 // ficam atrás da navbar e não recebem cliques nem leitura de tela.
@@ -30,13 +31,7 @@ export default function CornerMarks() {
         <path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" fill="none" />
       </motion.svg>
 
-      <svg className="corner corner--tr" viewBox="0 0 32 32" width="32" height="32">
-        {Array.from({ length: 64 }, (_, i) => {
-          const x = i % 8
-          const y = Math.floor(i / 8)
-          return (x + y) % 2 === 0 ? <rect key={i} x={x * 4} y={y * 4} width="4" height="4" fill="currentColor" /> : null
-        })}
-      </svg>
+      <Globe className="corner corner--tr" />
 
       <div className="corner corner--bl corner--accent">
         <svg viewBox="0 0 20 40" width="20" height="40" shapeRendering="crispEdges">
