@@ -1,15 +1,10 @@
 import { motion, useReducedMotion, useTransform } from 'motion/react'
 import { useScrollProgress } from '../hooks/useScrollProgress'
 import Globe from './Globe'
+import PixelShape from './PixelShape'
 
 // Marcas decorativas fixas nos cantos da janela (estilo HUD). Só aparecem em telas largas,
 // ficam atrás da navbar e não recebem cliques nem leitura de tela.
-
-// monograma "L" em pixel art (5 x 7)
-const LOGO: [number, number, number, number][] = [
-  [0, 0, 2, 7],
-  [2, 5, 3, 2],
-]
 
 const BARS = [3, 1, 2, 1, 1, 3, 1, 2, 1, 3, 1, 1, 2]
 
@@ -55,11 +50,7 @@ export default function CornerMarks() {
         </span>
       </div>
 
-      <svg className="corner corner--br" viewBox="0 0 5 7" width="30" height="42" shapeRendering="crispEdges">
-        {LOGO.map(([x, y, w, h], i) => (
-          <rect key={i} x={x} y={y} width={w} height={h} fill="currentColor" />
-        ))}
-      </svg>
+      <PixelShape className="corner corner--br" />
     </div>
   )
 }
