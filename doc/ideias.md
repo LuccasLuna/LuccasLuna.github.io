@@ -38,3 +38,7 @@ Fontes: [LogRocket](https://blog.logrocket.com/best-react-animation-libraries/),
 
 **Etiquetas técnicas:** elementos decorativos em mono, estilo etiqueta de container de carga, com dados de dev (Docker, CPU/memória, pacote de rede). Manter em baixo contraste para não poluir.
 
+**Links estilo Marathon:** marcador `[↗]` antes do texto e faixa vertical de listras diagonais na cor de destaque na borda esquerda (aplicado aos botões do Contato).
+
+**Marcas nos cantos:** mira, xadrez, faixa vertical com código de barras/ícones/texto e logo em pixel, fixos nos cantos da janela. Usar marca e texto próprios, não os do jogo.
+

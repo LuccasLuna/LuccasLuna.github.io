@@ -1,6 +1,7 @@
 import { MotionConfig } from 'motion/react'
 import About from './components/About'
 import Contact from './components/Contact'
+import CornerMarks from './components/CornerMarks'
 import Experience from './components/Experience'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
@@ -15,6 +16,7 @@ export default function App() {
     <MotionConfig reducedMotion="user">
       <ScrollProgress />
       <Navbar />
+      <CornerMarks />
       <main>
         <Hero />
         <ResourcesLabel />

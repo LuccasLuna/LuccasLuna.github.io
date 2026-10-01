@@ -105,4 +105,6 @@ Componentes ficariam em `src/components/`; dados (projetos, skills) em `src/data
 | 2026-09-30 | Informações genéricas do git | Nova etiqueta `GitLabel` (branch, HEAD, tag, ahead/behind, último commit) entre Habilidades e Experiência; valores fictícios |
 | 2026-10-01 | Etiqueta de CPU logo abaixo do hero | `ResourcesLabel` (CPU/memória/rede ao vivo) movida para logo depois do Hero, antes do Sobre |
 | 2026-10-01 | Etiqueta Docker no lugar da de CPU | `DockerLabel` saiu do hero e foi para entre Sobre e Projetos, onde estava a de CPU |
+| 2026-10-01 | Botões de contato no estilo da lista da referência | E-mail, GitHub e LinkedIn ganham marcador `[↗]` e faixa listrada diagonal à esquerda (`.btn--link`); botões do hero não mudam |
+| 2026-10-01 | Elementos HUD nos cantos da página | `CornerMarks`: mira (topo esquerdo), xadrez (topo direito), faixa vertical com código de barras, ícones, número e texto (baixo esquerdo) e monograma "L" em pixel (baixo direito); fixos, só em telas ≥1280px, decorativos. Os originais do Marathon (logo X e texto do jogo) não foram copiados |
 

@@ -1,0 +1,66 @@
+@use 'colors' as c;
+@use 'typography' as t;
+
+// Marcas decorativas nos cantos: abaixo da navbar (z-index 50), sem interação
+.corners {
+  display: none;
+  pointer-events: none;
+
+  // só em telas largas, onde sobra margem lateral
+  @media (min-width: 1280px) {
+    display: block;
+  }
+}
+
+.corner {
+  position: fixed;
+  z-index: 40;
+  color: c.$white;
+  opacity: 0.85;
+
+  &--accent {
+    color: c.$accent;
+  }
+
+  &--tl {
+    top: 76px;
+    left: 20px;
+  }
+
+  &--tr {
+    top: 76px;
+    right: 32px; // afastado da barra de rolagem
+  }
+
+  &--br {
+    bottom: 20px;
+    right: 32px;
+  }
+
+  &--bl {
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__num {
+    font-family: t.$font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    writing-mode: vertical-rl;
+  }
+
+  &__text {
+    font-family: t.$font-mono;
+    font-size: 0.6rem;
+    line-height: 1.4;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    color: c.$text;
+  }
+}
