@@ -25,6 +25,11 @@ $grid-line: var(--grid-line);
 $scanline: var(--scanline);
 $overlay: var(--overlay);
 
+// Vidro da navbar (efeito de vidro líquido sutil)
+$glass-tint: var(--glass-tint);
+$glass-highlight: var(--glass-highlight);
+$glass-shadow: var(--glass-shadow);
+
 // Reservadas para estados futuros (ainda não usadas, iguais nos dois temas)
 $violet: #3601fb;
 $cyan: #01ffff;
@@ -44,6 +49,9 @@ $orange: #ff5500;
   --grid-line: rgba(255, 255, 255, 0.04);
   --scanline: rgba(0, 0, 0, 0.18);
   --overlay: rgba(8, 10, 14, 0.85);
+  --glass-tint: rgba(8, 10, 14, 0.45);
+  --glass-highlight: rgba(255, 255, 255, 0.16);
+  --glass-shadow: rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme='light'] {
@@ -59,4 +67,7 @@ $orange: #ff5500;
   --grid-line: rgba(0, 0, 0, 0.05);
   --scanline: rgba(0, 0, 0, 0.04);
   --overlay: rgba(244, 245, 238, 0.85);
+  --glass-tint: rgba(244, 245, 238, 0.55);
+  --glass-highlight: rgba(255, 255, 255, 0.75);
+  --glass-shadow: rgba(20, 23, 28, 0.12);
 }

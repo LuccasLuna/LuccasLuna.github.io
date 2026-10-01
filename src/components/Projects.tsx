@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { projects, tools } from '../data/content'
+import { projects } from '../data/content'
 import { useAutoScroll } from '../hooks/useAutoScroll'
 import { useLang } from '../i18n/useLang'
 import Reveal from './Reveal'
@@ -75,8 +75,8 @@ export default function Projects() {
         )}
       </div>
 
-      <ToolsStrip label={t.projects.toolsLabel} aria={t.projects.toolsAria} items={tools} accent="primary" />
-      <ToolsStrip label={t.projects.stackLabel} aria={t.projects.toolsAria} items={[...tools].reverse()} accent="alt" reverse />
+      {/* <ToolsStrip label={t.projects.toolsLabel} aria={t.projects.toolsAria} items={tools} accent="primary" /> */}
+      {/* <ToolsStrip label={t.projects.stackLabel} aria={t.projects.toolsAria} items={[...tools].reverse()} accent="alt" reverse /> */}
     </section>
   )
 }

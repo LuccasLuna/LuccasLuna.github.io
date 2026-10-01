@@ -42,3 +42,5 @@ Fontes: [LogRocket](https://blog.logrocket.com/best-react-animation-libraries/),
 
 **Marcas nos cantos:** mira, xadrez, faixa vertical com código de barras/ícones/texto e logo em pixel, fixos nos cantos da janela. Usar marca e texto próprios, não os do jogo.
 
+**FluidGlass (React Bits):** testado como faixa 3D abaixo do hero e descartado: o vidro só refratava a cena do próprio canvas (não a página) e o resultado não ficou como esperado. Ficou o que o usuário gostou: o slider grande de ferramentas (duas linhas em sentidos opostos), agora em HTML/CSS, e um vidro líquido sutil em CSS só na navbar. Print da tentativa: [doc/capturas/faixa-3d-fluid-glass.png](capturas/faixa-3d-fluid-glass.png).
+
