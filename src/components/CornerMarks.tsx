@@ -1,3 +1,6 @@
+import { motion, useReducedMotion, useTransform } from 'motion/react'
+import { useScrollProgress } from '../hooks/useScrollProgress'
+
 // Marcas decorativas fixas nos cantos da janela (estilo HUD). Só aparecem em telas largas,
 // ficam atrás da navbar e não recebem cliques nem leitura de tela.
 
@@ -10,11 +13,22 @@ const LOGO: [number, number, number, number][] = [
 const BARS = [3, 1, 2, 1, 1, 3, 1, 2, 1, 3, 1, 1, 2]
 
 export default function CornerMarks() {
+  const progress = useScrollProgress()
+  const reduced = useReducedMotion()
+  // a mira gira junto com a barra de progresso: 2 voltas do topo ao fim da página
+  const rotate = useTransform(progress, [0, 1], [0, 720])
+
   return (
     <div className="corners" aria-hidden>
-      <svg className="corner corner--tl corner--accent" viewBox="0 0 24 24" width="28" height="28">
+      <motion.svg
+        className="corner corner--tl corner--accent"
+        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        style={reduced ? undefined : { rotate }}
+      >
         <path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" fill="none" />
-      </svg>
+      </motion.svg>
 
       <svg className="corner corner--tr" viewBox="0 0 32 32" width="32" height="32">
         {Array.from({ length: 64 }, (_, i) => {

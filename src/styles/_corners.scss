@@ -25,6 +25,8 @@
   &--tl {
     top: 76px;
     left: 20px;
+    transform-box: fill-box; // gira em torno do próprio centro
+    transform-origin: center;
   }
 
   &--tr {
