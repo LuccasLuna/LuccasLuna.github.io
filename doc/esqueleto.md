@@ -114,4 +114,5 @@ Componentes ficariam em `src/components/`; dados (projetos, skills) em `src/data
 | 2026-10-01 | Navbar responsiva em telas pequenas | Até 800px a barra fica numa linha só (marca, toggle de tema e botão `[ Menu ]`); os links viram um painel em coluna sob a barra, fechado ao escolher um link, com Esc ou ao voltar a tela grande |
 | 2026-10-01 | Seletor de idioma no menu | Select com Português (padrão), English, 中文, Español e Français; i18n própria em `src/i18n` (sem dependência), escolha salva no navegador, atualiza `<html lang>` e o título da aba; etiquetas decorativas continuam em inglês |
 | 2026-10-01 | Remover a borda do select de idioma | Removido o anel de foco do navegador (`outline: none`) em `.lang-select` |
+| 2026-10-01 | Lista do seletor de idioma no estilo do layout | O `<select>` nativo (popup não estilizável) virou um dropdown próprio e acessível (combobox/listbox, teclado completo, clique fora fecha), com itens em mono e destaque na cor do tema |
 

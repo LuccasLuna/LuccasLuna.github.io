@@ -74,12 +74,44 @@
   }
 }
 
-.lang-select {
-  outline: none; // sem o anel de foco do navegador depois de escolher um idioma
+.lang {
+  position: relative;
+}
 
-  option {
-    background: c.$bg;
+.lang-select {
+  outline: none; // sem o anel de foco do navegador
+}
+
+// lista de idiomas no mesmo estilo dos links do menu
+.lang__list {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: c.$bg;
+  border: 1px solid c.$border;
+  z-index: 60;
+}
+
+.lang__option {
+  @include m.label;
+  color: c.$muted;
+  padding: 10px 14px;
+  border-left: 3px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &--active {
     color: c.$text;
+    border-left-color: c.$border;
+  }
+
+  &--selected {
+    color: c.$accent;
+    border-left-color: c.$accent;
   }
 }
 
@@ -151,9 +183,20 @@
     }
 
     // o select fica como última linha do painel
-    &__links .lang-select {
+    // dentro do painel o dropdown ocupa a largura toda e a lista abre em fluxo (sem sobrepor)
+    &__links .lang {
       margin: 16px 24px;
+    }
+
+    &__links .lang-select {
+      width: 100%;
       padding: 10px;
+      text-align: left;
+    }
+
+    &__links .lang__list {
+      position: static;
+      margin-top: 6px;
     }
 
     &--top &__links .lang-select {
