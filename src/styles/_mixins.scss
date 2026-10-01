@@ -1,0 +1,30 @@
+@use 'colors' as c;
+@use 'typography' as t;
+
+// Rótulo técnico estilo Marathon: 01 // SOBRE
+@mixin label {
+  font-family: t.$font-mono;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: c.$muted;
+}
+
+@mixin display-title($size: t.$size-title) {
+  font-family: t.$font-display;
+  font-size: $size;
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+// Glitch ciano/magenta: só no hero e em hovers, para não poluir
+@mixin glitch-shadow {
+  text-shadow: 3px 0 c.$accent-magenta, -3px 0 c.$accent-cyan;
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

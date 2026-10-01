@@ -1,0 +1,48 @@
+@use 'colors' as c;
+@use 'typography' as t;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: c.$bg;
+  color: c.$text;
+  font-family: t.$font-body;
+  line-height: 1.6;
+  // grade sutil + scanlines de baixa opacidade
+  background-image:
+    linear-gradient(c.$grid-line 1px, transparent 1px),
+    linear-gradient(90deg, c.$grid-line 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(transparent 0 2px, c.$scanline 3px);
+  z-index: 100;
+}
+
+a {
+  color: inherit;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 120px 24px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid c.$border;
+}

@@ -1,0 +1,29 @@
+// Única fonte de cores do projeto. Nenhum outro arquivo deve usar hex direto.
+// Para trocar a paleta, edite só este arquivo.
+
+// Base
+$bg: #0a0a0f;
+$surface: #12121a;
+$border: #2a2a3a;
+$text: #e8eaf0;
+$muted: #7a7f8c;
+
+// Destaques (regra: 1 destaque por seção)
+$accent-cyan: #00f0ff;
+$accent-magenta: #ff2bd6;
+
+// Efeitos
+$grid-line: rgba(255, 255, 255, 0.04);
+$scanline: rgba(0, 0, 0, 0.18);
+$overlay: rgba(10, 10, 15, 0.85);
+
+// Expostas ao CSS (use var(--nome) quando precisar em runtime)
+:root {
+  --bg: #{$bg};
+  --surface: #{$surface};
+  --border: #{$border};
+  --text: #{$text};
+  --muted: #{$muted};
+  --accent-cyan: #{$accent-cyan};
+  --accent-magenta: #{$accent-magenta};
+}
