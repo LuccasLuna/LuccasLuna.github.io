@@ -13,6 +13,7 @@
   padding: 16px 24px;
   background: c.$overlay;
   border-bottom: 1px solid c.$border;
+  transition: background-color 0.3s, border-color 0.3s;
 
   &__brand {
     @include m.label;
@@ -22,6 +23,7 @@
 
   &__links {
     display: flex;
+    align-items: baseline; // alinha o texto dos links e do toggle pela linha de base
     gap: 20px;
     flex-wrap: wrap;
   }
@@ -38,8 +40,51 @@
     }
 
     &--active {
-      color: c.$accent-cyan;
-      border-bottom-color: c.$accent-cyan;
+      color: c.$accent;
+      border-bottom-color: c.$accent;
     }
   }
 }
+
+.theme-toggle {
+  @include m.label;
+  color: c.$text;
+  background: transparent;
+  border: 1px solid c.$border;
+  padding: 2px 10px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+
+  &:hover {
+    color: c.$accent;
+    border-color: c.$accent;
+  }
+}
+
+// No topo da página a barra assume a cor principal do tema (texto na cor do fundo)
+.navbar--top {
+  background: c.$accent;
+  border-bottom-color: c.$accent;
+
+  .navbar__brand,
+  .navbar__link,
+  .navbar__link:hover,
+  .navbar__link--active {
+    color: c.$bg;
+  }
+
+  .navbar__link--active {
+    border-bottom-color: c.$bg;
+  }
+
+  .theme-toggle {
+    color: c.$bg;
+    border-color: c.$bg;
+
+    &:hover {
+      color: c.$accent;
+      background: c.$bg;
+    }
+  }
+}
+

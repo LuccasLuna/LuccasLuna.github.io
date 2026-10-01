@@ -1,14 +1,14 @@
 import { useRef } from 'react'
 import { projects, tools } from '../data/content'
 import { useAutoScroll } from '../hooks/useAutoScroll'
+import Reveal from './Reveal'
 
-type StripProps = { label: string; items: string[]; accent: 'magenta' | 'cyan'; reverse?: boolean }
+type StripProps = { label: string; items: string[]; accent: 'primary' | 'alt'; reverse?: boolean }
 
 function ToolsStrip({ label, items, accent, reverse }: StripProps) {
   return (
-    <div
+    <Reveal
       className={`tools tools--${accent}${reverse ? ' tools--reverse' : ''}`}
-      aria-label="Ferramentas utilizadas nos projetos"
     >
       <span className="tools__label">{label}</span>
       <div className="tools__viewport">
@@ -18,7 +18,7 @@ function ToolsStrip({ label, items, accent, reverse }: StripProps) {
           ))}
         </ul>
       </div>
-    </div>
+    </Reveal>
   )
 }
 
@@ -38,7 +38,9 @@ export default function Projects() {
 
   return (
     <section id="projetos" className="section projects">
-      <span className="section__label">02 // Projetos</span>
+      <Reveal>
+        <span className="section__label">02 // Projetos</span>
+      </Reveal>
       <div className="projects__head">
         <h2 className="section__title">Trabalhos</h2>
         <div className="projects__controls">
@@ -51,7 +53,7 @@ export default function Projects() {
         {COPIES.map((copy) =>
           projects.map((p, i) => (
             <article
-              className={`slide slide--${i % 2 ? 'magenta' : 'cyan'}`}
+              className={`slide slide--${i % 2 ? 'alt' : 'primary'}`}
               key={`${copy}-${p.title}`}
               aria-hidden={copy !== 1}
               inert={copy !== 1}
@@ -70,8 +72,8 @@ export default function Projects() {
         )}
       </div>
 
-      <ToolsStrip label="Ferramentas" items={tools} accent="magenta" />
-      <ToolsStrip label="Stack" items={[...tools].reverse()} accent="cyan" reverse />
+      <ToolsStrip label="Ferramentas" items={tools} accent="primary" />
+      <ToolsStrip label="Stack" items={[...tools].reverse()} accent="alt" reverse />
     </section>
   )
 }

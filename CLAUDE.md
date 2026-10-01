@@ -10,7 +10,7 @@ Portfólio pessoal (Vite + React 19 + TypeScript) publicado como site de usuári
 
 Página única: `src/App.tsx` compõe `src/components/*` (Navbar, Hero, About, Projects, Skills, Experience, Contact, Footer). Textos e listas ficam em `src/data/content.ts`; `useActiveSection` (IntersectionObserver) marca a seção ativa na Navbar.
 
-Estilos em SCSS (`src/styles/main.scss` faz `@use` dos parciais, um por área, com classes BEM). **Todas as cores vivem só em `src/styles/_colors.scss`**: não use hex em outros arquivos; para novas cores, adicione lá.
+Estilos em SCSS (`src/styles/main.scss` faz `@use` dos parciais, um por área, com classes BEM). **Todas as cores vivem só em `src/styles/_colors.scss`**: não use hex em outros arquivos; para novas cores, adicione lá. As variáveis SCSS apontam para `var(--...)`; os valores dos temas escuro/claro ficam em `:root` e `:root[data-theme='light']` no mesmo arquivo, e `useTheme` troca `data-theme` (persistido em `localStorage`).
 
 ## Comandos
 

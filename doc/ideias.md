@@ -22,3 +22,19 @@ eu quero criar um portfolio com um design iterativo, bastante letras grandes(bus
 
 **Marathon:** estilo "Graphic Realism" (alto contraste, formas brutalistas; influências: Wipeout, Ghost in the Shell, The Designers Republic). Fontes KH Interference (mono, paga, [khtype.com](https://khtype.com/); usamos Space Mono como substituta gratuita) e Shapiro Wide 65; paleta amarelo-ácido sobre preto. [Creative Bloq](https://www.creativebloq.com/3d/video-game-design/bungies-art-director-explains-marathons-controversial-art-style), [Fonts In Use](https://fontsinuse.com/uses/67879/marathon-2026-video-game-1). Crítica a evitar: [UI com fontes e enfeites competindo](https://josephkerrdesign.com/bungies-overdesigned-uis-what-marathon-gets-wrong/).
 
+**Paleta em uso (Marathon):** accent `#C2FE0B`, fundo `#080A0E`, texto `#E8EDDF`, magenta `#EA027E`; reservadas violeta `#3601FB`, ciano `#01FFFF`, laranja `#FF5500`. Valores de um [tema de fã](https://github.com/Samat220/omarchy-marathon-theme), não de fonte oficial.
+
+## Libs de efeitos de scroll (React)
+
+- **Motion** (ex-Framer Motion, ~32KB): adotada. Revelar ao entrar na tela, parallax leve e barra de progresso.
+- **GSAP + ScrollTrigger** (~48KB, grátis): alternativa para timelines, pin e scrub ao estilo Awwwards. Já instalado para o ScrambleTextPlugin (efeito de letras aleatórias no nome).
+- **Lenis**: scroll suave com inércia; pode ser somado a Motion ou GSAP no futuro.
+- react-scroll-parallax (só parallax) e AOS (animações de entrada prontas, mais antiga): descartadas.
+Fontes: [LogRocket](https://blog.logrocket.com/best-react-animation-libraries/), [annnimate](https://annnimate.com/compare/react-animation-libraries).
+
+**Tema claro:** derivado por nós (não é do Marathon): fundo `#F4F5EE`, texto `#14171C`, destaque verde escuro `#4D6B00` (o acid não tem contraste sobre claro), magenta `#C4006A`.
+
+**Layout da seção Sobre:** inspirado no site do Marathon: linha de gancho em mono, título gigante em 2 linhas, texto mono caixa alta à esquerda e imagem grande à direita encostando na borda da tela.
+
+**Etiquetas técnicas:** elementos decorativos em mono, estilo etiqueta de container de carga, com dados de dev (Docker, CPU/memória, pacote de rede). Manter em baixo contraste para não poluir.
+

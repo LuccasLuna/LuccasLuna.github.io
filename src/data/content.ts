@@ -30,3 +30,14 @@ export const experience = [
   { period: '2024 — hoje', role: 'Cargo', company: 'Empresa' },
   { period: '2022 — 2024', role: 'Cargo', company: 'Empresa' },
 ]
+
+export const about = {
+  hook: 'Desenvolvedor full stack, do banco de dados à interface',
+  title: ['Construo da API', 'até a interface'],
+  paragraphs: [
+    'Escreva aqui um resumo curto sobre você: o que gosta de construir, as tecnologias com que trabalha e o tipo de problema que gosta de resolver.',
+    'No segundo parágrafo, conte o que busca agora: o tipo de projeto, de time ou de desafio em que quer se envolver.',
+  ],
+  // caminho em /public (ex.: 'about.jpg'); enquanto for null aparece um bloco placeholder
+  image: null as string | null,
+}

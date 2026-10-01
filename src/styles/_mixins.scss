@@ -12,17 +12,13 @@
 
 @mixin display-title($size: t.$size-title) {
   font-family: t.$font-display;
+  color: c.$white;
   font-size: $size;
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   margin: 0;
-}
-
-// Glitch ciano/magenta: só no hero e em hovers, para não poluir
-@mixin glitch-shadow {
-  text-shadow: 3px 0 c.$accent-magenta, -3px 0 c.$accent-cyan;
 }
 
 @mixin reduced-motion {

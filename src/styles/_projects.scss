@@ -26,8 +26,8 @@
       transition: color 0.2s, border-color 0.2s;
 
       &:hover {
-        color: c.$accent-cyan;
-        border-color: c.$accent-cyan;
+        color: c.$accent;
+        border-color: c.$accent;
       }
     }
   }
@@ -63,8 +63,8 @@
   border-top: 4px solid var(--slide-accent);
   transition: border-color 0.2s;
 
-  &--cyan { --slide-accent: #{c.$accent-cyan}; }
-  &--magenta { --slide-accent: #{c.$accent-magenta}; }
+  &--primary { --slide-accent: #{c.$accent}; }
+  &--alt { --slide-accent: #{c.$accent-alt}; }
 
   &:hover {
     border-color: var(--slide-accent);
@@ -110,14 +110,14 @@
     background: var(--tools-accent);
   }
 
-  &--magenta {
-    --tools-accent: #{c.$accent-magenta};
-    --tools-dot: #{c.$accent-cyan};
+  &--alt {
+    --tools-accent: #{c.$accent-alt};
+    --tools-dot: #{c.$accent};
   }
 
-  &--cyan {
-    --tools-accent: #{c.$accent-cyan};
-    --tools-dot: #{c.$accent-magenta};
+  &--primary {
+    --tools-accent: #{c.$accent};
+    --tools-dot: #{c.$accent-alt};
   }
 
   // segunda faixa: rótulo à direita e movimento no sentido oposto

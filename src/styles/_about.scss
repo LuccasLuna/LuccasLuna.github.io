@@ -1,0 +1,68 @@
+@use 'colors' as c;
+@use 'typography' as t;
+@use 'mixins' as m;
+
+.about {
+  &__hook {
+    @include m.label;
+    color: c.$text;
+    margin: 8px 0 16px;
+  }
+
+  &__title {
+    @include m.display-title(t.$size-giant);
+    max-width: 14ch;
+
+    // cada linha do título em bloco próprio: quebra sempre em 2 linhas
+    span {
+      display: block;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 2fr;
+    gap: 48px;
+    margin-top: clamp(48px, 10vh, 120px);
+    // a imagem encosta na borda direita da janela (a seção é centralizada com largura máxima)
+    margin-right: calc((100% - 100vw) / 2);
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+      margin-right: 0;
+    }
+  }
+
+  &__text {
+    @include m.label;
+    color: c.$text;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 34ch;
+
+    p {
+      margin: 0 0 1.5em;
+    }
+  }
+
+  &__media {
+    aspect-ratio: 16 / 10;
+    background: c.$surface;
+    border: 1px solid c.$border;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__placeholder {
+    @include m.label;
+  }
+}

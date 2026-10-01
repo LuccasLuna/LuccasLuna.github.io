@@ -4,18 +4,12 @@
 
 .section__label {
   @include m.label;
-  color: c.$accent-cyan;
+  color: c.$accent;
 }
 
 .section__title {
   @include m.display-title;
   margin: 8px 0 32px;
-}
-
-.about__text {
-  max-width: 640px;
-  font-size: 1.25rem;
-  color: c.$text;
 }
 
 .skills__grid {
@@ -28,14 +22,14 @@
   background: c.$surface;
   border: 1px solid c.$border;
   padding: 24px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, translate 0.2s;
 
   &:hover {
-    border-color: c.$accent-cyan;
-    transform: translateY(-4px);
+    border-color: c.$accent;
+    translate: 0 -4px; // propriedade `translate`, para não brigar com o transform do Motion
 
     @include m.reduced-motion {
-      transform: none;
+      translate: none;
     }
   }
 
@@ -70,7 +64,7 @@
 
   &__link {
     @include m.label;
-    color: c.$accent-cyan;
+    color: c.$accent;
     text-decoration: none;
 
     &:hover {
@@ -118,8 +112,7 @@
     transition: color 0.2s;
 
     &:hover {
-      color: c.$accent-magenta;
-      @include m.glitch-shadow;
+      color: c.$accent-alt;
     }
   }
 

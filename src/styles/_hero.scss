@@ -10,12 +10,11 @@
 
   &__label {
     @include m.label;
-    color: c.$accent-cyan;
+    color: c.$accent;
   }
 
   &__title {
     @include m.display-title(t.$size-giant);
-    @include m.glitch-shadow;
     margin: 16px 0;
   }
 
@@ -37,15 +36,15 @@
 .btn {
   @include m.label;
   color: c.$bg;
-  background: c.$accent-cyan;
+  background: c.$accent;
   padding: 14px 28px;
   text-decoration: none;
-  border: 1px solid c.$accent-cyan;
+  border: 1px solid c.$accent;
   transition: background 0.2s, color 0.2s;
 
   &:hover {
     background: transparent;
-    color: c.$accent-cyan;
+    color: c.$accent;
   }
 
   &--ghost {
@@ -54,8 +53,8 @@
     border-color: c.$border;
 
     &:hover {
-      color: c.$accent-cyan;
-      border-color: c.$accent-cyan;
+      color: c.$accent;
+      border-color: c.$accent;
     }
   }
 }
