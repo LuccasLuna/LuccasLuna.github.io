@@ -12,6 +12,8 @@ Página única: `src/App.tsx` compõe `src/components/*` (Navbar, Hero, About, P
 
 Estilos em SCSS (`src/styles/main.scss` faz `@use` dos parciais, um por área, com classes BEM). **Todas as cores vivem só em `src/styles/_colors.scss`**: não use hex em outros arquivos; para novas cores, adicione lá. As variáveis SCSS apontam para `var(--...)`; os valores dos temas escuro/claro ficam em `:root` e `:root[data-theme='light']` no mesmo arquivo, e `useTheme` troca `data-theme` (persistido em `localStorage`).
 
+Textos do site ficam em `src/i18n/messages.ts` (pt é o padrão e define o tipo; en, zh, es e fr precisam das mesmas chaves). Os componentes leem `t` via `useLang()`. Para um novo idioma, adicione-o em `messages` e em `LANGS`. Etiquetas decorativas (`Labels.tsx`, `CornerMarks.tsx`) ficam em inglês, sem tradução.
+
 ## Comandos
 
 - `npm run dev`: servidor de desenvolvimento

@@ -19,13 +19,24 @@
     @include m.label;
     color: c.$text;
     text-decoration: none;
+    white-space: nowrap;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: baseline; // alinha o texto dos links e do toggle pela linha de base
+    gap: 20px;
   }
 
   &__links {
     display: flex;
-    align-items: baseline; // alinha o texto dos links e do toggle pela linha de base
+    align-items: baseline;
     gap: 20px;
-    flex-wrap: wrap;
+  }
+
+  // botão do menu: só aparece em telas pequenas
+  &__menu {
+    display: none;
   }
 
   &__link {
@@ -46,7 +57,9 @@
   }
 }
 
-.theme-toggle {
+.theme-toggle,
+.navbar__menu,
+.lang-select {
   @include m.label;
   color: c.$text;
   background: transparent;
@@ -58,6 +71,15 @@
   &:hover {
     color: c.$accent;
     border-color: c.$accent;
+  }
+}
+
+.lang-select {
+  outline: none; // sem o anel de foco do navegador depois de escolher um idioma
+
+  option {
+    background: c.$bg;
+    color: c.$text;
   }
 }
 
@@ -77,13 +99,82 @@
     border-bottom-color: c.$bg;
   }
 
-  .theme-toggle {
+  .theme-toggle,
+  .navbar__menu,
+  .lang-select {
     color: c.$bg;
     border-color: c.$bg;
 
     &:hover {
       color: c.$accent;
       background: c.$bg;
+    }
+  }
+}
+
+// Telas pequenas: barra compacta de uma linha; os links viram um painel sob a barra
+@media (max-width: 800px) {
+  .navbar {
+    padding: 12px 16px;
+
+    &__actions {
+      gap: 10px;
+      align-items: center;
+    }
+
+    &__menu {
+      display: inline-block;
+    }
+
+    &__links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: c.$bg;
+      border-bottom: 1px solid c.$border;
+
+      &--open {
+        display: flex;
+      }
+    }
+
+    &__link {
+      padding: 16px 24px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid c.$border;
+      border-left: 3px solid transparent;
+    }
+
+    // o select fica como última linha do painel
+    &__links .lang-select {
+      margin: 16px 24px;
+      padding: 10px;
+    }
+
+    &--top &__links .lang-select {
+      color: c.$text;
+      border-color: c.$border;
+    }
+
+    // no painel o fundo é o do tema, então os links usam as cores normais mesmo com a barra no topo
+    &--top &__links &__link {
+      color: c.$muted;
+
+      &:hover {
+        color: c.$text;
+      }
+    }
+
+    &__link--active,
+    &--top &__links &__link--active {
+      color: c.$accent;
+      border-bottom-color: c.$border;
+      border-left-color: c.$accent;
     }
   }
 }

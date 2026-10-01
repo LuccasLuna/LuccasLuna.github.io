@@ -111,4 +111,7 @@ Componentes ficariam em `src/components/`; dados (projetos, skills) em `src/data
 | 2026-10-01 | Canto superior direito vira globo que gira ao rolar | O xadrez deu lugar a um globo em arame (`Globe.tsx`) cujos meridianos variam com o progresso do scroll, simulando 2 giros do topo ao fim da página; parado com movimento reduzido |
 | 2026-10-01 | Elemento do canto inferior direito muda de formato | `PixelShape.tsx`: pixel art 5x7 que a cada ~4 s se dissolve no próximo formato (L, <, /, >, X, cursor oco); fica no L com movimento reduzido |
 | 2026-10-01 | Formatos aleatórios de bloco faltando pixels | `PixelShape.tsx` passa a sortear a cada ~4 s um bloco 5x7 com retângulos recortados e pixels removidos (mín. 40% ligados, nunca igual ao anterior); a lista fixa de formatos (L, <, /, >, X) foi removida |
+| 2026-10-01 | Navbar responsiva em telas pequenas | Até 800px a barra fica numa linha só (marca, toggle de tema e botão `[ Menu ]`); os links viram um painel em coluna sob a barra, fechado ao escolher um link, com Esc ou ao voltar a tela grande |
+| 2026-10-01 | Seletor de idioma no menu | Select com Português (padrão), English, 中文, Español e Français; i18n própria em `src/i18n` (sem dependência), escolha salva no navegador, atualiza `<html lang>` e o título da aba; etiquetas decorativas continuam em inglês |
+| 2026-10-01 | Remover a borda do select de idioma | Removido o anel de foco do navegador (`outline: none`) em `.lang-select` |
 

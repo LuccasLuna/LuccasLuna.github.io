@@ -1,14 +1,16 @@
 import { useRef } from 'react'
 import { projects, tools } from '../data/content'
 import { useAutoScroll } from '../hooks/useAutoScroll'
+import { useLang } from '../i18n/useLang'
 import Reveal from './Reveal'
 
-type StripProps = { label: string; items: string[]; accent: 'primary' | 'alt'; reverse?: boolean }
+type StripProps = { label: string; aria: string; items: string[]; accent: 'primary' | 'alt'; reverse?: boolean }
 
-function ToolsStrip({ label, items, accent, reverse }: StripProps) {
+function ToolsStrip({ label, aria, items, accent, reverse }: StripProps) {
   return (
     <Reveal
       className={`tools tools--${accent}${reverse ? ' tools--reverse' : ''}`}
+      aria={aria}
     >
       <span className="tools__label">{label}</span>
       <div className="tools__viewport">
@@ -26,6 +28,7 @@ function ToolsStrip({ label, items, accent, reverse }: StripProps) {
 const COPIES = [0, 1, 2]
 
 export default function Projects() {
+  const { t } = useLang()
   const track = useRef<HTMLDivElement>(null)
   const { hold } = useAutoScroll(track, projects.length)
 
@@ -39,41 +42,41 @@ export default function Projects() {
   return (
     <section id="projetos" className="section projects">
       <Reveal>
-        <span className="section__label">02 // Projetos</span>
+        <span className="section__label">02 // {t.projects.label}</span>
       </Reveal>
       <div className="projects__head">
-        <h2 className="section__title">Trabalhos</h2>
+        <h2 className="section__title">{t.projects.heading}</h2>
         <div className="projects__controls">
-          <button type="button" aria-label="Projetos anteriores" onClick={() => scroll(-1)}>←</button>
-          <button type="button" aria-label="Próximos projetos" onClick={() => scroll(1)}>→</button>
+          <button type="button" aria-label={t.projects.prev} onClick={() => scroll(-1)}>←</button>
+          <button type="button" aria-label={t.projects.next} onClick={() => scroll(1)}>→</button>
         </div>
       </div>
 
-      <div className="slider" ref={track} aria-label="Slider de projetos">
+      <div className="slider" ref={track} aria-label={t.projects.slider}>
         {COPIES.map((copy) =>
           projects.map((p, i) => (
             <article
               className={`slide slide--${i % 2 ? 'alt' : 'primary'}`}
-              key={`${copy}-${p.title}`}
+              key={`${copy}-${i}`}
               aria-hidden={copy !== 1}
               inert={copy !== 1}
             >
               <span className="slide__index">{String(i + 1).padStart(2, '0')}</span>
               <div>
-                <h3 className="slide__title">{p.title}</h3>
-                <p className="slide__text">{p.description}</p>
+                <h3 className="slide__title">{t.projects.items[i].title}</h3>
+                <p className="slide__text">{t.projects.items[i].description}</p>
                 <ul className="card__tags">
                   {p.tags.map((t) => <li key={t}>{t}</li>)}
                 </ul>
-                <a className="card__link" href={p.href}>Ver projeto →</a>
+                <a className="card__link" href={p.href}>{t.projects.view}</a>
               </div>
             </article>
           )),
         )}
       </div>
 
-      <ToolsStrip label="Ferramentas" items={tools} accent="primary" />
-      <ToolsStrip label="Stack" items={[...tools].reverse()} accent="alt" reverse />
+      <ToolsStrip label={t.projects.toolsLabel} aria={t.projects.toolsAria} items={tools} accent="primary" />
+      <ToolsStrip label={t.projects.stackLabel} aria={t.projects.toolsAria} items={[...tools].reverse()} accent="alt" reverse />
     </section>
   )
 }
