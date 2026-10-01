@@ -1,0 +1,58 @@
+@use 'colors' as c;
+@use 'typography' as t;
+@use 'mixins' as m;
+
+// Slider grande de ferramentas (usa o @keyframes tools-scroll de _projects.scss)
+.marquee {
+  display: grid;
+  gap: 8px;
+  padding: 24px 0;
+  overflow: hidden;
+  border-top: 1px solid c.$border;
+  border-bottom: 1px solid c.$border;
+
+  &__row {
+    overflow: hidden;
+
+    &--primary {
+      color: c.$accent;
+    }
+
+    &--plain {
+      color: c.$white;
+    }
+  }
+
+  &__track {
+    display: flex;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: tools-scroll 40s linear infinite;
+
+    @include m.reduced-motion {
+      animation: none;
+    }
+
+    li {
+      font-family: t.$font-display;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 7vw, 6rem);
+      line-height: 1.15;
+      white-space: nowrap;
+
+      // separador "/" entre as ferramentas
+      &::after {
+        content: '/';
+        margin: 0 0.6em;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__row--reverse &__track {
+    animation-direction: reverse;
+    animation-duration: 50s;
+  }
+}

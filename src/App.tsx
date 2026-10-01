@@ -9,6 +9,7 @@ import { DockerLabel, GitLabel, PacketLabel, ResourcesLabel } from './components
 import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import ScrollProgress from './components/ScrollProgress'
+import ToolsMarquee from './components/ToolsMarquee'
 import Skills from './components/Skills'
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       <CornerMarks />
       <main>
         <Hero />
+        <ToolsMarquee />
         <ResourcesLabel />
         <About />
         <DockerLabel />

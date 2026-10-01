@@ -66,6 +66,11 @@
     @include m.label;
     color: c.$accent;
     text-decoration: none;
+    // também é usado em <button>
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
 
     &:hover {
       text-decoration: underline;
@@ -110,9 +115,50 @@
     text-decoration: none;
     margin-bottom: 32px;
     transition: color 0.2s;
+    position: relative;
 
     &:hover {
       color: c.$accent-alt;
+    }
+
+    // Glitch: duas camadas com o mesmo texto (data-text), recortadas em faixas e deslocadas.
+    // Em rajadas curtas a cada poucos segundos; no hover/foco toca uma vez.
+    &::before,
+    &::after {
+      content: attr(data-text);
+      white-space: pre;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    &::before {
+      color: c.$accent;
+      animation: glitch-a 4s steps(1) infinite;
+    }
+
+    &::after {
+      color: c.$accent-alt;
+      animation: glitch-b 4s steps(1) infinite;
+    }
+
+    &:hover::before,
+    &:focus-visible::before {
+      animation: glitch-a-hover 0.6s steps(1) 1;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      animation: glitch-b-hover 0.6s steps(1) 1;
+    }
+
+    @include m.reduced-motion {
+      &::before,
+      &::after {
+        animation: none !important;
+        display: none;
+      }
     }
   }
 
@@ -129,3 +175,38 @@
   padding: 32px 24px;
   border-top: 1px solid c.$border;
 }
+
+// rajada rápida nos últimos ~12% do ciclo; no resto as camadas ficam invisíveis
+@keyframes glitch-a {
+  0%, 87%, 98%, 100% { opacity: 0; }
+  88% { opacity: 1; clip-path: inset(10% 0 60% 0); transform: translate(-4px, 0); }
+  90% { opacity: 1; clip-path: inset(55% 0 15% 0); transform: translate(4px, -1px); }
+  93% { opacity: 1; clip-path: inset(30% 0 40% 0); transform: translate(-3px, 1px); }
+  96% { opacity: 1; clip-path: inset(75% 0 5% 0); transform: translate(3px, 0); }
+}
+
+@keyframes glitch-b {
+  0%, 88%, 99%, 100% { opacity: 0; }
+  89% { opacity: 1; clip-path: inset(60% 0 10% 0); transform: translate(4px, 1px); }
+  91% { opacity: 1; clip-path: inset(15% 0 55% 0); transform: translate(-4px, 0); }
+  94% { opacity: 1; clip-path: inset(45% 0 30% 0); transform: translate(3px, -1px); }
+  97% { opacity: 1; clip-path: inset(5% 0 80% 0); transform: translate(-3px, 0); }
+}
+
+// no hover/foco o glitch toca uma vez (e termina limpo); para repetir, sair e entrar de novo
+@keyframes glitch-a-hover {
+  0% { opacity: 1; clip-path: inset(10% 0 60% 0); transform: translate(-4px, 0); }
+  25% { opacity: 1; clip-path: inset(55% 0 15% 0); transform: translate(4px, -1px); }
+  50% { opacity: 1; clip-path: inset(30% 0 40% 0); transform: translate(-3px, 1px); }
+  75% { opacity: 1; clip-path: inset(75% 0 5% 0); transform: translate(3px, 0); }
+  100% { opacity: 0; }
+}
+
+@keyframes glitch-b-hover {
+  0% { opacity: 1; clip-path: inset(60% 0 10% 0); transform: translate(4px, 1px); }
+  25% { opacity: 1; clip-path: inset(15% 0 55% 0); transform: translate(-4px, 0); }
+  50% { opacity: 1; clip-path: inset(45% 0 30% 0); transform: translate(3px, -1px); }
+  75% { opacity: 1; clip-path: inset(5% 0 80% 0); transform: translate(-3px, 0); }
+  100% { opacity: 0; }
+}
+

@@ -14,6 +14,10 @@ Estilos em SCSS (`src/styles/main.scss` faz `@use` dos parciais, um por área, c
 
 Textos do site ficam em `src/i18n/messages.ts` (pt é o padrão e define o tipo; en, zh, es e fr precisam das mesmas chaves). Os componentes leem `t` via `useLang()`. Para um novo idioma, adicione-o em `messages` e em `LANGS`. Etiquetas decorativas (`Labels.tsx`, `CornerMarks.tsx`) ficam em inglês, sem tradução.
 
+A navbar tem efeito de vidro líquido sutil em CSS (`.navbar` em `src/styles/_navbar.scss`, cores `--glass-*` em `_colors.scss`); no topo da página fica na cor de destaque. O slider grande de ferramentas (`ToolsMarquee.tsx`) fica logo abaixo do hero.
+
+Cada projeto em `content.ts` tem `year`, `images` (caminhos em `public/projects/`) e `demo`/`repo` opcionais; título, descrição e textos do modal vêm de `projects.items[i]` em `messages.ts`. O modal (`ProjectModal.tsx`) usa `<dialog>` nativo.
+
 ## Comandos
 
 - `npm run dev`: servidor de desenvolvimento

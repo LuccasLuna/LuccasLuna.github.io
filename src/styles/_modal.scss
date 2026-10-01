@@ -1,0 +1,175 @@
+@use 'colors' as c;
+@use 'typography' as t;
+@use 'mixins' as m;
+
+// Modal de detalhes do projeto (<dialog> nativo)
+.modal {
+  width: min(1000px, 92vw);
+  max-height: 90vh;
+  margin: auto;
+  padding: 0;
+  color: c.$text;
+  background: c.$bg;
+  border: 1px solid c.$border;
+  overflow: hidden;
+  outline: none; // o <dialog> recebe foco ao abrir; sem anel do navegador
+
+  &::backdrop {
+    background: c.$glass-tint;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  &[open],
+  &[open]::backdrop {
+    animation: modal-in 0.25s ease-out;
+
+    @include m.reduced-motion {
+      animation: none;
+    }
+  }
+
+  &__body {
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px clamp(20px, 4vw, 40px) 40px;
+  }
+
+  &__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: -24px;
+    margin: -24px calc(-1 * clamp(20px, 4vw, 40px)) 24px;
+    padding: 16px clamp(20px, 4vw, 40px);
+    background: c.$bg;
+    border-bottom: 1px solid c.$border;
+    z-index: 1;
+  }
+
+  &__close {
+    @include m.label;
+    color: c.$text;
+    background: transparent;
+    border: 1px solid c.$border;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+
+    &:hover {
+      color: c.$accent;
+      border-color: c.$accent;
+    }
+  }
+
+  &__title {
+    @include m.display-title;
+    margin: 0 0 12px;
+  }
+
+  &__lead {
+    color: c.$muted;
+    margin: 0 0 32px;
+    max-width: 60ch;
+  }
+
+  &__cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 32px;
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__info p {
+    margin: 0 0 24px;
+  }
+
+  &__facts {
+    display: flex;
+    gap: 32px;
+    margin: 0 0 24px;
+
+    dt {
+      @include m.label;
+    }
+
+    dd {
+      margin: 0;
+      color: c.$white;
+    }
+  }
+
+  &__sub {
+    @include m.label;
+    color: c.$accent;
+    margin: 0 0 8px;
+  }
+
+  &__list {
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: 8px 0 8px 16px;
+      border-bottom: 1px solid c.$border;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 1.1em;
+        width: 6px;
+        height: 6px;
+        background: c.$accent;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__gallery {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+
+    img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border: 1px solid c.$border;
+    }
+  }
+
+  &__placeholder {
+    @include m.label;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: c.$surface;
+    border: 1px solid c.$border;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

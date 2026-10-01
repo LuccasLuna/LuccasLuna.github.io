@@ -2,6 +2,7 @@ import { type RefObject, useCallback, useEffect, useRef } from 'react'
 
 const SPEED = 40 // px por segundo
 const RESUME_DELAY = 2000
+const DRAG_THRESHOLD = 5 // px
 
 /**
  * Rolagem horizontal automática e infinita para um contêiner com `copies` cópias
@@ -29,6 +30,7 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
     }
 
     let hovering = false
+    let pressed = false
     let dragging = false
     let dragStartX = 0
     let dragStartScroll = 0
@@ -76,18 +78,25 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
       hovering = false
       hold(RESUME_DELAY)
     }
+    // só vira arrasto depois de mover alguns pixels: um clique simples (ex.: no botão "Ver projeto")
+    // continua chegando ao elemento clicado, porque a captura do ponteiro redirecionaria o click
     const onDown = (e: PointerEvent) => {
       if (e.pointerType !== 'mouse') return
-      dragging = true
+      pressed = true
       dragStartX = e.clientX
       dragStartScroll = el.scrollLeft
-      el.setPointerCapture(e.pointerId)
-      el.classList.add('slider--dragging')
     }
     const onMove = (e: PointerEvent) => {
+      if (!pressed) return
+      if (!dragging && Math.abs(e.clientX - dragStartX) > DRAG_THRESHOLD) {
+        dragging = true
+        el.setPointerCapture(e.pointerId)
+        el.classList.add('slider--dragging')
+      }
       if (dragging) el.scrollLeft = dragStartScroll - (e.clientX - dragStartX)
     }
     const onUp = () => {
+      pressed = false
       if (!dragging) return
       dragging = false
       el.classList.remove('slider--dragging')

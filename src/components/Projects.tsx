@@ -1,12 +1,13 @@
-import { useRef } from 'react'
-import { projects, tools } from '../data/content'
+import { useRef, useState } from 'react'
+import { projects } from '../data/content'
 import { useAutoScroll } from '../hooks/useAutoScroll'
 import { useLang } from '../i18n/useLang'
+import ProjectModal from './ProjectModal'
 import Reveal from './Reveal'
 
 type StripProps = { label: string; aria: string; items: string[]; accent: 'primary' | 'alt'; reverse?: boolean }
 
-function ToolsStrip({ label, aria, items, accent, reverse }: StripProps) {
+export function ToolsStrip({ label, aria, items, accent, reverse }: StripProps) {
   return (
     <Reveal
       className={`tools tools--${accent}${reverse ? ' tools--reverse' : ''}`}
@@ -30,6 +31,7 @@ const COPIES = [0, 1, 2]
 export default function Projects() {
   const { t } = useLang()
   const track = useRef<HTMLDivElement>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
   const { hold } = useAutoScroll(track, projects.length)
 
   const scroll = (dir: 1 | -1) => {
@@ -68,15 +70,19 @@ export default function Projects() {
                 <ul className="card__tags">
                   {p.tags.map((t) => <li key={t}>{t}</li>)}
                 </ul>
-                <a className="card__link" href={p.href}>{t.projects.view}</a>
+                <button type="button" className="card__link" onClick={() => setOpenIndex(i)}>
+                  {t.projects.view}
+                </button>
               </div>
             </article>
           )),
         )}
       </div>
 
-      <ToolsStrip label={t.projects.toolsLabel} aria={t.projects.toolsAria} items={tools} accent="primary" />
-      <ToolsStrip label={t.projects.stackLabel} aria={t.projects.toolsAria} items={[...tools].reverse()} accent="alt" reverse />
+      <ProjectModal index={openIndex} onClose={() => setOpenIndex(null)} />
+
+      {/* <ToolsStrip label={t.projects.toolsLabel} aria={t.projects.toolsAria} items={tools} accent="primary" /> */}
+      {/* <ToolsStrip label={t.projects.stackLabel} aria={t.projects.toolsAria} items={[...tools].reverse()} accent="alt" reverse /> */}
     </section>
   )
 }
