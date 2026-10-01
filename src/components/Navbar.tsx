@@ -5,7 +5,7 @@ export default function Navbar() {
   const active = useActiveSection(sections.map((s) => s.id))
   return (
     <nav className="navbar">
-      <a className="navbar__brand" href="#inicio">// SEU_NOME</a>
+      <a className="navbar__brand" href="#inicio">// LUCAS_LUNA</a>
       <div className="navbar__links">
         {sections.slice(1).map((s) => (
           <a
