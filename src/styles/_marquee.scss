@@ -10,6 +10,10 @@
   overflow: hidden;
   border-top: 1px solid c.$border;
   border-bottom: 1px solid c.$border;
+  // fica dentro do hero, que é uma .section (max-width 1200px + padding lateral):
+  // a sangria devolve a largura da janela, como em .about__body
+  margin-left: calc((100% - 100vw) / 2);
+  margin-right: calc((100% - 100vw) / 2);
 
   &__row {
     overflow: hidden;

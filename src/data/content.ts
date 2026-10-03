@@ -17,13 +17,16 @@ export type Project = {
   repo?: string
 }
 
-// A ordem daqui corresponde a `projects.items` em messages.ts (título, descrição e detalhes do modal)
+// A ordem daqui corresponde a `projects.items` em messages.ts (título, descrição e detalhes do modal).
+// São sistemas internos de um cliente do setor público: ficam sem nome real, sem demo e sem repositório.
 export const projects: Project[] = [
-  { tags: ['Node', 'Postgres', 'React'], year: '2025', images: [] },
-  { tags: ['TypeScript', 'Express'], year: '2025', images: [] },
-  { tags: ['Next.js', 'Prisma', 'Stripe'], year: '2024', images: [] },
-  { tags: ['React', 'Vite', 'Docker'], year: '2024', images: [] },
-  { tags: ['GitHub Actions', 'Docker', 'Linux'], year: '2023', images: [] },
+  { tags: ['React', 'TypeScript', 'Ant Design', 'Zustand', 'Docker'], year: '2026', images: [] },
+  { tags: ['React', 'TanStack Query', 'NestJS', 'TypeORM', 'Nginx'], year: '2026', images: [] },
+  { tags: ['React', 'TypeScript', 'CKEditor', 'NestJS', 'TypeORM'], year: '2025–2026', images: [] },
+  { tags: ['React', 'Ant Design', 'React Hook Form', 'Zod', 'TypeScript'], year: '2025–2026', images: [] },
+  { tags: ['React', 'TanStack Query', 'ECharts', 'NestJS', 'Prisma'], year: '2024–2026', images: [] },
+  { tags: ['React', 'Module Federation', 'Zustand', 'NestJS', 'Prisma'], year: '2024–2026', images: [] },
+  { tags: ['PHP', 'Laravel', 'Livewire', 'Oracle'], year: '2022–2025', images: [] },
 ]
 
 // Ferramentas usadas nos projetos profissionais (alimenta o slider abaixo do hero).

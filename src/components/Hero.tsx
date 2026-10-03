@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useScramble } from '../hooks/useScramble'
 import { useLang } from '../i18n/useLang'
+import ToolsMarquee from './ToolsMarquee'
 
 const NAME = 'Lucas_Luna'
 
@@ -11,15 +12,18 @@ export default function Hero() {
 
   return (
     <section id="inicio" className="section hero">
-      <span className="hero__label">00 // {t.hero.label}</span>
-      <h1 className="hero__title" aria-label={NAME} onPointerEnter={replay}>
-        <span ref={nameRef} aria-hidden>{NAME}</span>
-      </h1>
-      <p className="hero__subtitle">{t.hero.subtitle}</p>
-      <div className="hero__actions">
-        <a className="btn" href="#projetos">{t.hero.seeProjects}</a>
-        <a className="btn btn--ghost" href="#contato">{t.hero.contact}</a>
+      <div className="hero__content">
+        <span className="hero__label">00 // {t.hero.label}</span>
+        <h1 className="hero__title" aria-label={NAME} onPointerEnter={replay}>
+          <span ref={nameRef} aria-hidden>{NAME}</span>
+        </h1>
+        <p className="hero__subtitle">{t.hero.subtitle}</p>
+        <div className="hero__actions">
+          <a className="btn" href="#projetos">{t.hero.seeProjects}</a>
+          <a className="btn btn--ghost" href="#contato">{t.hero.contact}</a>
+        </div>
       </div>
+      <ToolsMarquee />
     </section>
   )
 }

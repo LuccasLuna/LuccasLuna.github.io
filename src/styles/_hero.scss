@@ -5,8 +5,16 @@
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   border-top: none;
+  padding-bottom: 0; // o slider de ferramentas encosta na base da primeira tela
+
+  // ocupa a altura que sobra acima do slider e centraliza o texto nela
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   &__label {
     @include m.label;
