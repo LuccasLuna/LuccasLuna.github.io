@@ -26,8 +26,31 @@ export const projects: Project[] = [
   { tags: ['GitHub Actions', 'Docker', 'Linux'], year: '2023', images: [] },
 ]
 
-// Todas as ferramentas usadas nos projetos, sem repetição (alimenta a faixa abaixo do slider)
-export const tools = [...new Set(projects.flatMap((p) => p.tags))]
+// Ferramentas usadas nos projetos profissionais (alimenta o slider abaixo do hero).
+// Lista própria, não derivada de `projects`: a faixa mostra o repertório inteiro,
+// não só o stack dos projetos em destaque. Só o principal — linguagem, framework,
+// libs centrais e infra. A ordem é visual (alterna nomes curtos e longos).
+export const tools = [
+  'TypeScript',
+  'React',
+  'NestJS',
+  'Node.js',
+  'Ant Design',
+  'Zustand',
+  'TanStack Query',
+  'React Hook Form',
+  'Zod',
+  'TypeORM',
+  'Prisma',
+  'Vite',
+  'SASS',
+  'PHP',
+  'Laravel',
+  'Docker',
+  'Nginx',
+  'Linux',
+  'Git',
+]
 
 // Os nomes dos grupos vêm de `skills.groups` em messages.ts
 export const skills: Record<'frontend' | 'backend' | 'tools', string[]> = {
@@ -44,5 +67,5 @@ export const experience: { from: string; to: string | null }[] = [
 
 export const about = {
   // caminho em /public (ex.: 'about.jpg'); enquanto for null aparece um bloco placeholder
-  image: null as string | null,
+  image: 'about.webp' as string | null,
 }

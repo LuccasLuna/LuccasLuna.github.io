@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Portfólio pessoal (Vite + React 19 + TypeScript) publicado como site de usuário do GitHub Pages em https://luccasluna.github.io/ (repo `LuccasLuna/LuccasLuna.github.io`). Layout básico implementado com conteúdo placeholder; ele evolui a partir de [doc/esqueleto.md](doc/esqueleto.md), que descreve seções, wireframe e decisões em aberto. Ao implementar ou remover algo pedido pelo usuário, registre no Changelog desse documento. Antes de criar seções, componentes ou estilos novos, consulte [doc/ideias.md](doc/ideias.md) (direção visual: tipografia grande, cyberpunk + design do Marathon, interativo, sem poluição visual).
 
+## Fonte de conteúdo
+
+Os projetos em que o usuário já trabalhou ficam em `~/trabalho` (fora deste repo). Use-os como contexto para textos de projetos, experiência e skills (`content.ts` / `messages.ts`): stack, propósito e funcionalidades saem do código e dos `CLAUDE.md` de lá. Pastas: `auth` (portal + backend de autenticação), `caderneta`, `ccp`, `eppais`, `gerenciamento-atividades`, `sistrans`, `transporte-legado` (PHP legado); em geral cada uma tem um backend NestJS e um front React (prefixo `itesp.`). `linkedin/descricoes-linkedin.md` tem descrições já redigidas. Só leitura: não altere nada em `~/trabalho` e não exponha no site dados internos ou sensíveis desses sistemas (credenciais, URLs internas, dados de clientes).
+
 ## Arquitetura
 
 Página única: `src/App.tsx` compõe `src/components/*` (Navbar, Hero, About, Projects, Skills, Experience, Contact, Footer). Textos e listas ficam em `src/data/content.ts`; `useActiveSection` (IntersectionObserver) marca a seção ativa na Navbar.
