@@ -19,8 +19,8 @@ export default function Hero() {
         </h1>
         <p className="hero__subtitle">{t.hero.subtitle}</p>
         <div className="hero__actions">
-          <a className="btn" href="#projetos">{t.hero.seeProjects}</a>
-          <a className="btn btn--ghost" href="#contato">{t.hero.contact}</a>
+          <a className="btn btn--plus" href="#projetos">{t.hero.seeProjects}<span className="btn__plus" aria-hidden /></a>
+          <a className="btn btn--ghost btn--plus" href="#contato">{t.hero.contact}<span className="btn__plus" aria-hidden /></a>
         </div>
       </div>
       <ToolsMarquee />
