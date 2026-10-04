@@ -1,0 +1,24 @@
+@use 'colors' as c;
+@use 'mixins' as m;
+
+// Glitch de "monitor com defeito" nos espaços vazios do hero (ver PixelGlitch.tsx).
+// É um canvas atrás do texto (z-index -1 dentro do contexto criado por .hero__content),
+// com a largura da janela, como o slider de ferramentas. As cores chegam por custom
+// properties para o canvas lê-las em runtime (continuam só em _colors.scss).
+.pixel-glitch {
+  --glitch-primary: #{c.$accent};
+  --glitch-secondary: #{c.$accent-alt};
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+
+  @include m.reduced-motion {
+    display: none;
+  }
+}

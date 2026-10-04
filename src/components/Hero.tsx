@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useScramble } from '../hooks/useScramble'
 import { useLang } from '../i18n/useLang'
+import PixelGlitch from './PixelGlitch'
 import ToolsMarquee from './ToolsMarquee'
 
 const NAME = 'Lucas_Luna'
@@ -13,6 +14,7 @@ export default function Hero() {
   return (
     <section id="inicio" className="section hero">
       <div className="hero__content">
+        <PixelGlitch />
         <span className="hero__label">00 // {t.hero.label}</span>
         <h1 className="hero__title" aria-label={NAME} onPointerEnter={replay}>
           <span ref={nameRef} aria-hidden>{NAME}</span>
