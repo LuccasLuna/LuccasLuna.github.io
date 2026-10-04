@@ -47,7 +47,6 @@ export default function Navbar() {
           ))}
           <LanguageSelect />
         </div>
-        <AudioToggle />
         <ThemeToggle />
         <button
           type="button"
@@ -58,6 +57,7 @@ export default function Navbar() {
         >
           [ {open ? t.menu.close : t.menu.open} ]
         </button>
+        <AudioToggle />
       </div>
     </nav>
   )
