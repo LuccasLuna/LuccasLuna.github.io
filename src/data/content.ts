@@ -1,3 +1,5 @@
+import audioUrl from '../assets/audio/audio-cyberpunk.mp3'
+
 // Dados sem texto traduzível. Os textos (títulos, descrições, rótulos) ficam em src/i18n/messages.ts.
 export const sections = [
   { id: 'inicio' },
@@ -28,6 +30,9 @@ export const projects: Project[] = [
   { tags: ['React', 'Module Federation', 'Zustand', 'NestJS', 'Prisma'], year: '2024–2026', images: [] },
   { tags: ['PHP', 'Laravel', 'Livewire', 'Oracle'], year: '2022–2025', images: [] },
 ]
+
+// Música de fundo (o Vite devolve a URL final, com hash e base)
+export const AUDIO_SRC = audioUrl
 
 // Ferramentas usadas nos projetos profissionais (alimenta o slider abaixo do hero).
 // Lista própria, não derivada de `projects`: a faixa mostra o repertório inteiro,

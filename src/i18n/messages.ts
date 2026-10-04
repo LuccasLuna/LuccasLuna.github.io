@@ -16,6 +16,7 @@ const pt = {
   nav: { inicio: 'Início', sobre: 'Sobre', projetos: 'Projetos', habilidades: 'Habilidades', experiencia: 'Experiência', contato: 'Contato' },
   menu: { open: 'Menu', close: 'Fechar' },
   theme: { light: 'Claro', dark: 'Escuro', aria: 'Alternar tema claro/escuro' },
+  audio: { on: 'Som', off: 'Mudo', aria: 'Ligar/desligar a música' },
   language: { label: 'Idioma' },
   hero: { label: 'Olá, eu sou', subtitle: 'Desenvolvedor Full Stack', seeProjects: 'Ver projetos', contact: 'Contato' },
   about: {
@@ -91,6 +92,7 @@ const en: Messages = {
   nav: { inicio: 'Home', sobre: 'About', projetos: 'Projects', habilidades: 'Skills', experiencia: 'Experience', contato: 'Contact' },
   menu: { open: 'Menu', close: 'Close' },
   theme: { light: 'Light', dark: 'Dark', aria: 'Toggle light/dark theme' },
+  audio: { on: 'Sound', off: 'Muted', aria: 'Turn the music on/off' },
   language: { label: 'Language' },
   hero: { label: "Hello, I'm", subtitle: 'Full Stack Developer', seeProjects: 'See projects', contact: 'Contact' },
   about: {
@@ -164,6 +166,7 @@ const zh: Messages = {
   nav: { inicio: '首页', sobre: '关于', projetos: '项目', habilidades: '技能', experiencia: '经历', contato: '联系' },
   menu: { open: '菜单', close: '关闭' },
   theme: { light: '浅色', dark: '深色', aria: '切换浅色/深色主题' },
+  audio: { on: '声音', off: '静音', aria: '开启/关闭音乐' },
   language: { label: '语言' },
   hero: { label: '你好，我是', subtitle: '全栈开发工程师', seeProjects: '查看项目', contact: '联系我' },
   about: {
@@ -237,6 +240,7 @@ const es: Messages = {
   nav: { inicio: 'Inicio', sobre: 'Sobre mí', projetos: 'Proyectos', habilidades: 'Habilidades', experiencia: 'Experiencia', contato: 'Contacto' },
   menu: { open: 'Menú', close: 'Cerrar' },
   theme: { light: 'Claro', dark: 'Oscuro', aria: 'Cambiar tema claro/oscuro' },
+  audio: { on: 'Sonido', off: 'Silencio', aria: 'Activar/desactivar la música' },
   language: { label: 'Idioma' },
   hero: { label: 'Hola, soy', subtitle: 'Desarrollador Full Stack', seeProjects: 'Ver proyectos', contact: 'Contacto' },
   about: {
@@ -310,6 +314,7 @@ const fr: Messages = {
   nav: { inicio: 'Accueil', sobre: 'À propos', projetos: 'Projets', habilidades: 'Compétences', experiencia: 'Expérience', contato: 'Contact' },
   menu: { open: 'Menu', close: 'Fermer' },
   theme: { light: 'Clair', dark: 'Sombre', aria: 'Basculer entre thème clair et sombre' },
+  audio: { on: 'Son', off: 'Muet', aria: 'Activer/couper la musique' },
   language: { label: 'Langue' },
   hero: { label: 'Bonjour, je suis', subtitle: 'Développeur Full Stack', seeProjects: 'Voir les projets', contact: 'Contact' },
   about: {
