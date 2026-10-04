@@ -57,7 +57,10 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
 
       if (!holding && !reduced) pos += SPEED * dt
 
-      if (p > 0 && !holding) {
+      // volta para a cópia do meio (as três são idênticas, então o salto não aparece). Vale também com
+      // o mouse parado sobre o slider: se ele parasse além da cópia do meio, só haveria cópias à vista.
+      // Fica de fora enquanto algo depende da posição exata: clique, arrasto e rolagem suave dos botões
+      if (p > 0 && !(pressed || dragging || now < holdUntil.current)) {
         if (pos >= 2 * p) pos -= p
         else if (pos < p) pos += p
       }
