@@ -27,10 +27,14 @@
     }
   }
 
-  // solto na página, em largura total: sem sangria e sem borda de baixo (o footer já tem a dele)
+  // solto na página (fora de uma .section), em largura total: sem a sangria lateral
   &--page {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  // último elemento antes do footer, que já tem a borda de cima
+  &--end {
     border-bottom: 0;
   }
 

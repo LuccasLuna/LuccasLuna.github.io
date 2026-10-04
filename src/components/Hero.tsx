@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { useScramble } from '../hooks/useScramble'
 import { useLang } from '../i18n/useLang'
 import PixelGlitch from './PixelGlitch'
-import ToolsMarquee from './ToolsMarquee'
 
 const NAME = 'Lucas_Luna'
 
@@ -25,7 +24,6 @@ export default function Hero() {
           <a className="btn btn--ghost btn--plus" href="#contato">{t.hero.contact}<span className="btn__plus" aria-hidden /></a>
         </div>
       </div>
-      <ToolsMarquee />
     </section>
   )
 }

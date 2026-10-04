@@ -20,6 +20,7 @@ export default function App() {
       <CornerMarks />
       <main>
         <Hero />
+        <ToolsMarquee page />
         <ResourcesLabel />
         <About />
         <DockerLabel />
@@ -29,7 +30,7 @@ export default function App() {
         <Experience />
         <PacketLabel />
         <Contact />
-        <ToolsMarquee accent="alt" page invert />
+        <ToolsMarquee accent="alt" page end invert />
       </main>
       <Footer />
     </MotionConfig>

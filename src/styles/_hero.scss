@@ -6,9 +6,8 @@
   display: flex;
   flex-direction: column;
   border-top: none;
-  padding-bottom: 0; // o slider de ferramentas encosta na base da primeira tela
 
-  // ocupa a altura que sobra acima do slider e centraliza o texto nela
+  // ocupa a altura toda do hero e centraliza o texto nela
   &__content {
     position: relative;
     isolation: isolate; // contém o z-index -1 da camada de glitch (PixelGlitch)
