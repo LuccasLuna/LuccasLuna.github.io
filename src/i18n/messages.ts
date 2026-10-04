@@ -21,7 +21,7 @@ const pt = {
   about: {
     label: 'Sobre',
     hook: 'Desenvolvedor full stack, do banco de dados à interface',
-    title: ['Construo da API', 'até a interface'],
+    title: ['Da API', 'até a interface'],
     paragraphs: [
       'Desenvolvo sistemas web para o setor público, com foco em front-end com React e TypeScript e atuação full stack com NestJS. Fui o principal desenvolvedor front-end de sistemas de gestão de frota, de convênios com municípios e de compras públicas da agricultura familiar, construindo as telas do zero: da autenticação e do controle de acesso aos relatórios e à geração de documentos.',
       'Comecei mantendo um sistema legado em PHP/Laravel e ajudei a reescrevê-lo em uma stack moderna. No dia a dia também cuido de containerização e deploy com Docker e Nginx. Busco projetos em que eu possa ir da API à interface, com atenção à qualidade do código e à experiência de quem usa.',

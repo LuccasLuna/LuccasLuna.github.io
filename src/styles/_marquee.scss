@@ -27,6 +27,18 @@
     }
   }
 
+  // solto na página, em largura total: sem sangria e sem borda de baixo (o footer já tem a dele)
+  &--page {
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: 0;
+  }
+
+  // variante com a cor secundária
+  &--alt &__row--primary {
+    color: c.$accent-alt;
+  }
+
   &__track {
     display: flex;
     width: max-content;

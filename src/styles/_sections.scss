@@ -109,6 +109,10 @@
 }
 
 .contact {
+  // conteúdo curto: não precisa ocupar a tela inteira (o resto das seções ocupa)
+  min-height: auto;
+  padding-bottom: 64px;
+
   &__big {
     @include m.display-title(t.$size-giant);
     display: block;

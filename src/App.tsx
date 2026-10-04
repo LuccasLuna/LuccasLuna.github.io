@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import ScrollProgress from './components/ScrollProgress'
 import Skills from './components/Skills'
+import ToolsMarquee from './components/ToolsMarquee'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Experience />
         <PacketLabel />
         <Contact />
+        <ToolsMarquee accent="alt" page invert />
       </main>
       <Footer />
     </MotionConfig>

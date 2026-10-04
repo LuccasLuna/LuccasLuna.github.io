@@ -57,9 +57,9 @@ export const tools = [
 
 // Os nomes dos grupos vêm de `skills.groups` em messages.ts
 export const skills: Record<'frontend' | 'backend' | 'tools', string[]> = {
-  frontend: ['React', 'TypeScript', 'SCSS', 'Vite'],
-  backend: ['Node.js', 'Express', 'REST', 'PostgreSQL'],
-  tools: ['Git', 'Docker', 'GitHub Actions', 'Linux'],
+  frontend: ['React', 'TypeScript', 'Ant Design', 'Zustand', 'TanStack Query', 'React Hook Form', 'Zod', 'Vite', 'SASS'],
+  backend: ['NestJS', 'Node.js', 'TypeORM', 'Prisma', 'MySQL', 'JWT', 'Swagger', 'PHP / Laravel'],
+  tools: ['Git', 'Docker', 'Nginx', 'Linux', 'Jest', 'ESLint / Prettier', 'Husky / Commitlint'],
 }
 
 // `to: null` = até hoje (texto em messages.ts)
