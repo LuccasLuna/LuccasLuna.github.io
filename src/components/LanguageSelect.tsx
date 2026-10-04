@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { LANGS, type Lang } from '../i18n/messages'
 import { useLang } from '../i18n/useLang'
+import Tip from './Tip'
 
 // Dropdown próprio (o popup do <select> nativo não aceita o estilo do layout).
 // Segue o padrão "select-only combobox" do WAI-ARIA: botão + listbox, com teclado completo.
@@ -11,6 +12,7 @@ export default function LanguageSelect() {
   const root = useRef<HTMLDivElement>(null)
   const button = useRef<HTMLButtonElement>(null)
   const listId = useId()
+  const tipId = useId()
 
   const currentIndex = LANGS.findIndex((l) => l.code === lang)
   const current = LANGS[currentIndex]
@@ -82,17 +84,19 @@ export default function LanguageSelect() {
       <button
         ref={button}
         type="button"
-        className="lang-select"
+        className="lang-select tip-host"
         role="combobox"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
         aria-activedescendant={open ? `${listId}-${LANGS[active].code}` : undefined}
         aria-label={t.language.label}
+        aria-describedby={open ? undefined : tipId}
         onClick={() => (open ? setOpen(false) : openList())}
         onKeyDown={onKeyDown}
       >
         {current.label} <span aria-hidden>▾</span>
+        {!open && <Tip id={tipId}>{t.language.hint}</Tip>}
       </button>
       {open && (
         <ul className="lang__list" role="listbox" id={listId} aria-label={t.language.label}>

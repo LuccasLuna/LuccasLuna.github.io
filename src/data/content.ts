@@ -1,3 +1,5 @@
+import audioUrl from '../assets/audio/audio-cyberpunk.mp3'
+
 // Dados sem texto traduzível. Os textos (títulos, descrições, rótulos) ficam em src/i18n/messages.ts.
 export const sections = [
   { id: 'inicio' },
@@ -17,23 +19,52 @@ export type Project = {
   repo?: string
 }
 
-// A ordem daqui corresponde a `projects.items` em messages.ts (título, descrição e detalhes do modal)
+// A ordem daqui corresponde a `projects.items` em messages.ts (título, descrição e detalhes do modal).
+// São sistemas internos de um cliente do setor público: ficam sem nome real, sem demo e sem repositório.
 export const projects: Project[] = [
-  { tags: ['Node', 'Postgres', 'React'], year: '2025', images: [] },
-  { tags: ['TypeScript', 'Express'], year: '2025', images: [] },
-  { tags: ['Next.js', 'Prisma', 'Stripe'], year: '2024', images: [] },
-  { tags: ['React', 'Vite', 'Docker'], year: '2024', images: [] },
-  { tags: ['GitHub Actions', 'Docker', 'Linux'], year: '2023', images: [] },
+  { tags: ['React', 'TypeScript', 'Ant Design', 'Zustand', 'Docker'], year: '2026', images: [] },
+  { tags: ['React', 'TanStack Query', 'NestJS', 'TypeORM', 'Nginx'], year: '2026', images: [] },
+  { tags: ['React', 'TypeScript', 'CKEditor', 'NestJS', 'TypeORM'], year: '2025–2026', images: [] },
+  { tags: ['React', 'Ant Design', 'React Hook Form', 'Zod', 'TypeScript'], year: '2025–2026', images: [] },
+  { tags: ['React', 'TanStack Query', 'ECharts', 'NestJS', 'Prisma'], year: '2024–2026', images: [] },
+  { tags: ['React', 'Module Federation', 'Zustand', 'NestJS', 'Prisma'], year: '2024–2026', images: [] },
+  { tags: ['PHP', 'Laravel', 'Livewire', 'Oracle'], year: '2022–2025', images: [] },
 ]
 
-// Todas as ferramentas usadas nos projetos, sem repetição (alimenta a faixa abaixo do slider)
-export const tools = [...new Set(projects.flatMap((p) => p.tags))]
+// Música de fundo (o Vite devolve a URL final, com hash e base)
+export const AUDIO_SRC = audioUrl
+
+// Ferramentas usadas nos projetos profissionais (alimenta o slider abaixo do hero).
+// Lista própria, não derivada de `projects`: a faixa mostra o repertório inteiro,
+// não só o stack dos projetos em destaque. Só o principal — linguagem, framework,
+// libs centrais e infra. A ordem é visual (alterna nomes curtos e longos).
+export const tools = [
+  'TypeScript',
+  'React',
+  'NestJS',
+  'Node.js',
+  'Ant Design',
+  'Zustand',
+  'TanStack Query',
+  'React Hook Form',
+  'Zod',
+  'TypeORM',
+  'Prisma',
+  'Vite',
+  'SASS',
+  'PHP',
+  'Laravel',
+  'Docker',
+  'Nginx',
+  'Linux',
+  'Git',
+]
 
 // Os nomes dos grupos vêm de `skills.groups` em messages.ts
 export const skills: Record<'frontend' | 'backend' | 'tools', string[]> = {
-  frontend: ['React', 'TypeScript', 'SCSS', 'Vite'],
-  backend: ['Node.js', 'Express', 'REST', 'PostgreSQL'],
-  tools: ['Git', 'Docker', 'GitHub Actions', 'Linux'],
+  frontend: ['React', 'TypeScript', 'Ant Design', 'Zustand', 'TanStack Query', 'React Hook Form', 'Zod', 'Vite', 'SASS'],
+  backend: ['NestJS', 'Node.js', 'TypeORM', 'Prisma', 'MySQL', 'JWT', 'Swagger', 'PHP / Laravel'],
+  tools: ['Git', 'Docker', 'Nginx', 'Linux', 'Jest', 'ESLint / Prettier', 'Husky / Commitlint'],
 }
 
 // `to: null` = até hoje (texto em messages.ts)
@@ -44,5 +75,5 @@ export const experience: { from: string; to: string | null }[] = [
 
 export const about = {
   // caminho em /public (ex.: 'about.jpg'); enquanto for null aparece um bloco placeholder
-  image: null as string | null,
+  image: 'about.webp' as string | null,
 }

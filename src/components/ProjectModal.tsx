@@ -80,11 +80,7 @@ export default function ProjectModal({ index, onClose }: Props) {
               </ul>
 
               <h4 className="modal__sub">{m.highlights}</h4>
-              <ul className="modal__list">
-                {text.details.highlights.map((h) => (
-                  <li key={h}>{h}</li>
-                ))}
-              </ul>
+              <p>{text.details.contribution}</p>
 
               {(project.demo || project.repo) && (
                 <div className="modal__links">

@@ -10,6 +10,10 @@
   overflow: hidden;
   border-top: 1px solid c.$border;
   border-bottom: 1px solid c.$border;
+  // fica dentro do hero, que é uma .section (max-width 1200px + padding lateral):
+  // a sangria devolve a largura da janela, como em .about__body
+  margin-left: calc((100% - 100vw) / 2);
+  margin-right: calc((100% - 100vw) / 2);
 
   &__row {
     overflow: hidden;
@@ -21,6 +25,22 @@
     &--plain {
       color: c.$white;
     }
+  }
+
+  // solto na página (fora de uma .section), em largura total: sem a sangria lateral
+  &--page {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  // último elemento antes do footer, que já tem a borda de cima
+  &--end {
+    border-bottom: 0;
+  }
+
+  // variante com a cor secundária
+  &--alt &__row--primary {
+    color: c.$accent-alt;
   }
 
   &__track {

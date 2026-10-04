@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Portfólio pessoal (Vite + React 19 + TypeScript) publicado como site de usuário do GitHub Pages em https://luccasluna.github.io/ (repo `LuccasLuna/LuccasLuna.github.io`). Layout básico implementado com conteúdo placeholder; ele evolui a partir de [doc/esqueleto.md](doc/esqueleto.md), que descreve seções, wireframe e decisões em aberto. Ao implementar ou remover algo pedido pelo usuário, registre no Changelog desse documento. Antes de criar seções, componentes ou estilos novos, consulte [doc/ideias.md](doc/ideias.md) (direção visual: tipografia grande, cyberpunk + design do Marathon, interativo, sem poluição visual).
 
+## Fonte de conteúdo
+
+Os projetos em que o usuário já trabalhou ficam em `~/trabalho` (fora deste repo). Use-os como contexto para textos de projetos, experiência e skills (`content.ts` / `messages.ts`): stack, propósito e funcionalidades saem do código e dos `CLAUDE.md` de lá. Pastas: `auth` (portal + backend de autenticação), `caderneta`, `ccp`, `eppais`, `gerenciamento-atividades`, `sistrans`, `transporte-legado` (PHP legado); em geral cada uma tem um backend NestJS e um front React (prefixo `itesp.`). `linkedin/descricoes-linkedin.md` tem descrições já redigidas. Só leitura: não altere nada em `~/trabalho` e não exponha no site dados internos ou sensíveis desses sistemas (credenciais, URLs internas, dados de clientes).
+
 ## Arquitetura
 
 Página única: `src/App.tsx` compõe `src/components/*` (Navbar, Hero, About, Projects, Skills, Experience, Contact, Footer). Textos e listas ficam em `src/data/content.ts`; `useActiveSection` (IntersectionObserver) marca a seção ativa na Navbar.
@@ -14,7 +18,7 @@ Estilos em SCSS (`src/styles/main.scss` faz `@use` dos parciais, um por área, c
 
 Textos do site ficam em `src/i18n/messages.ts` (pt é o padrão e define o tipo; en, zh, es e fr precisam das mesmas chaves). Os componentes leem `t` via `useLang()`. Para um novo idioma, adicione-o em `messages` e em `LANGS`. Etiquetas decorativas (`Labels.tsx`, `CornerMarks.tsx`) ficam em inglês, sem tradução.
 
-A navbar tem efeito de vidro líquido sutil em CSS (`.navbar` em `src/styles/_navbar.scss`, cores `--glass-*` em `_colors.scss`); no topo da página fica na cor de destaque. O slider grande de ferramentas (`ToolsMarquee.tsx`) fica logo abaixo do hero.
+A navbar tem efeito de vidro líquido sutil em CSS (`.navbar` em `src/styles/_navbar.scss`, cores `--glass-*` em `_colors.scss`); no topo da página fica na cor de destaque. O slider grande de ferramentas (`ToolsMarquee.tsx`) fica logo abaixo do hero. A música de fundo (`useAudio.ts`, botão `AudioToggle.tsx` na navbar) toca `src/assets/audio/audio-cyberpunk.mp3` em loop a partir do primeiro clique; se o áudio não carregar, o botão some. O áudio precisa ter licença de uso.
 
 Cada projeto em `content.ts` tem `year`, `images` (caminhos em `public/projects/`) e `demo`/`repo` opcionais; título, descrição e textos do modal vêm de `projects.items[i]` em `messages.ts`. O modal (`ProjectModal.tsx`) usa `<dialog>` nativo.
 

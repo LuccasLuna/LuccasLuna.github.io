@@ -61,7 +61,6 @@ export default function Projects() {
               className={`slide slide--${i % 2 ? 'alt' : 'primary'}`}
               key={`${copy}-${i}`}
               aria-hidden={copy !== 1}
-              inert={copy !== 1}
             >
               <span className="slide__index">{String(i + 1).padStart(2, '0')}</span>
               <div>
@@ -70,7 +69,14 @@ export default function Projects() {
                 <ul className="card__tags">
                   {p.tags.map((t) => <li key={t}>{t}</li>)}
                 </ul>
-                <button type="button" className="card__link" onClick={() => setOpenIndex(i)}>
+                {/* as cópias 0 e 2 só existem para o loop, mas aparecem na tela perto das pontas: precisam
+                    abrir o modal ao clique. `inert` as deixava mortas; aqui só saem da ordem do Tab */}
+                <button
+                  type="button"
+                  className="card__link"
+                  tabIndex={copy === 1 ? undefined : -1}
+                  onClick={() => setOpenIndex(i)}
+                >
                   {t.projects.view}
                 </button>
               </div>

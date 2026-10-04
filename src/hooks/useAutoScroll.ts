@@ -32,6 +32,7 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
     let hovering = false
     let pressed = false
     let dragging = false
+    let capturedId: number | null = null
     let dragStartX = 0
     let dragStartScroll = 0
     let pos = 0
@@ -46,14 +47,20 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
       const dt = Math.min(now - last, 100) / 1000
       last = now
       const p = period()
-      const holding = hovering || dragging || now < holdUntil.current
+      // `pressed` entra aqui para o carrossel ficar parado entre o pointerdown e o
+      // pointerup: se ele andasse durante o clique, o alvo mudaria e o click seria
+      // redirecionado para um ancestral, perdendo o botão "Ver projeto"
+      const holding = hovering || pressed || dragging || now < holdUntil.current
 
       // alguém mexeu no scroll (roda, arraste, botões, toque): seguir a posição real
       if (Math.abs(el.scrollLeft - lastSet) > 1) pos = el.scrollLeft
 
       if (!holding && !reduced) pos += SPEED * dt
 
-      if (p > 0 && !holding) {
+      // volta para a cópia do meio (as três são idênticas, então o salto não aparece). Vale também com
+      // o mouse parado sobre o slider: se ele parasse além da cópia do meio, só haveria cópias à vista.
+      // Fica de fora enquanto algo depende da posição exata: clique, arrasto e rolagem suave dos botões
+      if (p > 0 && !(pressed || dragging || now < holdUntil.current)) {
         if (pos >= 2 * p) pos -= p
         else if (pos < p) pos += p
       }
@@ -87,9 +94,20 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
       dragStartScroll = el.scrollLeft
     }
     const onMove = (e: PointerEvent) => {
+      // o pointerenter só dispara ao entrar: se o ponteiro já estava sobre o slider
+      // quando o efeito montou (ou quando o modal fechou), `hovering` ficaria falso
+      // e o carrossel andaria debaixo do cursor
+      if (e.pointerType === 'mouse') hovering = true
       if (!pressed) return
+      // o botão já foi solto, mas o pointerup não chegou (soltou fora da janela):
+      // sem isto, `pressed` ficaria preso e o próximo movimento viraria um arrasto fantasma
+      if (e.buttons === 0) {
+        onUp()
+        return
+      }
       if (!dragging && Math.abs(e.clientX - dragStartX) > DRAG_THRESHOLD) {
         dragging = true
+        capturedId = e.pointerId
         el.setPointerCapture(e.pointerId)
         el.classList.add('slider--dragging')
       }
@@ -99,6 +117,8 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
       pressed = false
       if (!dragging) return
       dragging = false
+      if (capturedId !== null && el.hasPointerCapture(capturedId)) el.releasePointerCapture(capturedId)
+      capturedId = null
       el.classList.remove('slider--dragging')
       hold(RESUME_DELAY)
     }
@@ -110,8 +130,10 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
     el.addEventListener('pointerleave', onLeave)
     el.addEventListener('pointerdown', onDown)
     el.addEventListener('pointermove', onMove)
-    el.addEventListener('pointerup', onUp)
-    el.addEventListener('pointercancel', onUp)
+    // na janela, e não no slider: soltar o botão fora dele também precisa encerrar o arrasto
+    window.addEventListener('pointerup', onUp)
+    window.addEventListener('pointercancel', onUp)
+    window.addEventListener('blur', onUp)
     el.addEventListener('touchstart', onTouchStart, { passive: true })
     el.addEventListener('touchend', onTouchEnd, { passive: true })
 
@@ -122,8 +144,9 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>, count: number)
       el.removeEventListener('pointerleave', onLeave)
       el.removeEventListener('pointerdown', onDown)
       el.removeEventListener('pointermove', onMove)
-      el.removeEventListener('pointerup', onUp)
-      el.removeEventListener('pointercancel', onUp)
+      window.removeEventListener('pointerup', onUp)
+      window.removeEventListener('pointercancel', onUp)
+      window.removeEventListener('blur', onUp)
       el.removeEventListener('touchstart', onTouchStart)
       el.removeEventListener('touchend', onTouchEnd)
     }

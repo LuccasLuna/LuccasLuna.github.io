@@ -3,6 +3,7 @@ import { sections } from '../data/content'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useAtTop } from '../hooks/useAtTop'
 import { useLang } from '../i18n/useLang'
+import AudioToggle from './AudioToggle'
 import LanguageSelect from './LanguageSelect'
 import ThemeToggle from './ThemeToggle'
 
@@ -56,6 +57,7 @@ export default function Navbar() {
         >
           [ {open ? t.menu.close : t.menu.open} ]
         </button>
+        <AudioToggle />
       </div>
     </nav>
   )

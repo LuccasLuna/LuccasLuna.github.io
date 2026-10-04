@@ -15,12 +15,17 @@ function Row({ tone, reverse, items }: RowProps) {
 }
 
 // Slider grande com as ferramentas usadas: duas linhas correndo em sentidos opostos (decorativo)
-export default function ToolsMarquee() {
+type Props = { accent?: 'primary' | 'alt'; page?: boolean; end?: boolean; invert?: boolean }
+
+// `invert`: troca o sentido das duas linhas
+// `page`: o slider fica solto na página (fora de uma .section), sem a sangria lateral
+// `end`: sem a borda de baixo, para encostar no footer
+export default function ToolsMarquee({ accent = 'primary', page, end, invert }: Props) {
   const items = tools.map((t) => t.toUpperCase())
   return (
-    <div className="marquee" aria-hidden>
-      <Row tone="primary" items={items} />
-      <Row tone="plain" reverse items={[...items].reverse()} />
+    <div className={`marquee${accent === 'alt' ? ' marquee--alt' : ''}${page ? ' marquee--page' : ''}${end ? ' marquee--end' : ''}`} aria-hidden>
+      <Row tone="primary" reverse={invert} items={items} />
+      <Row tone="plain" reverse={!invert} items={[...items].reverse()} />
     </div>
   )
 }
